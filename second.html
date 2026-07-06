@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>РосКасса Сервис — Чеки коррекции и Маркировка</title>
+    <!-- Подключение Tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+    <!-- ГЛАВНЫЙ БАННЕР (HERO SECTION) -->
+    <header class="relative bg-gradient-to-br from-gray-900 via-indigo-950 to-gray-950 text-white overflow-hidden py-12 lg:py-24">
+        <!-- Декоративные фоновые элементы -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- ЛЕВАЯ ЧАСТЬ: СИЛЬНЫЙ ТЕКСТ И ТРИГГЕРЫ БОЛИ -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Заметный предупреждающий бейдж -->
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20 uppercase tracking-wider">
+                        ⚠️ Внимание: Автоматические штрафы ФНС и ГИС МТ
+                    </span>
+                    
+                    <!-- Главный жесткий заголовок -->
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                        Защитите бизнес от <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-yellow-400">штрафов ФНС</span> и блокировок в «Честном ЗНАКе»
+                    </h1>
+                    
+                    <!-- Описание боли клиента -->
+                    <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl">
+                        Кассир ошибся в чеке, перепутал нал/безнал или не знаете, как правильно принять и отгрузить маркированный товар? Самостоятельные исправления и работа «наугад» могут стоить вашему бизнесу <strong class="text-white border-b-2 border-red-500">до 100% от выручки</strong> в виде штрафов по 54-ФЗ и КоАП РФ.
+                    </p>
+                    
+                    <!-- Наше решение -->
+                    <p class="text-base text-indigo-200 font-medium">
+                        Удаленно исправим любые кассовые ошибки через чеки коррекции по ФФД 1.2 и пошагово обучим вашу команду работе в маркировке без отрыва от продаж.
+                    </p>
+
+                    <!-- Плашки-триггеры для визуального усиления -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
+                        <div class="flex items-start p-3 bg-white/5 rounded-xl border border-white/10">
+                            <span class="text-red-400 mr-3 text-lg">🛑</span>
+                            <p class="text-sm text-gray-300"><span class="text-white font-semibold">Ошибки чеков:</span> наличные/безналичные, неверная СНО, сбой тегов.</p>
+                        </div>
+                        <div class="flex items-start p-3 bg-white/5 rounded-xl border border-white/10">
+                            <span class="text-red-400 mr-3 text-lg">🛑</span>
+                            <p class="text-sm text-gray-300"><span class="text-white font-semibold">Сбои маркировки:</span> зависшие коды, проблемы разрешительного режима.</p>
+                        </div>
+                        <div class="flex items-start p-3 bg-white/5 rounded-xl border border-white/10">
+                            <span class="text-green-400 mr-3 text-lg">✓</span>
+                            <p class="text-sm text-gray-300"><span class="text-white font-semibold">100% Удаленно:</span> подключаемся по всей РФ за 5 минут через AnyDesk.</p>
+                        </div>
+                        <div class="flex items-start p-3 bg-white/5 rounded-xl border border-white/10">
+                            <span class="text-green-400 mr-3 text-lg">✓</span>
+                            <p class="text-sm text-gray-300"><span class="text-white font-semibold">Гарантия чистоты:</span> официальный договор для вашей бухгалтерии.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ПРАВАЯ ЧАСТЬ: ИНТЕРАКТИВНАЯ ФОРМА ЗАХВАТА -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white text-gray-900 rounded-2xl shadow-2xl p-6 sm:p-8 border border-gray-100">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">
+                            Защитить бизнес от штрафов
+                        </h3>
+                        <p class="text-xs text-gray-500 mb-6">
+                            Оставьте заявку — дежурный инженер свяжется с вами в течение 5 минут для экспресс-анализа вашей проблемы.
+                        </p>
+                        
+                        <form action="#" method="POST" class="space-y-4">
+                            <!-- Поле выбора услуги -->
+                            <div>
+                                <label for="service-type" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                                    Что у вас случилось?
+                                </label>
+                                <select id="service-type" name="service-type" class="block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-gray-800 transition duration-150">
+                                    <option value="" disabled selected>-- Выберите проблему --</option>
+                                    <option value="correction">Нужен чек коррекции (ошибка кассира / СНО / нал-безнал)</option>
+                                    <option value="learning-retail">Нужно обучение маркировке (Розничный магазин / общепит)</option>
+                                    <option value="learning-prod">Нужно обучение маркировке (Производство / Опт / Импорт)</option>
+                                    <option value="other">Другая экстренная проблема с ККТ или Честным Знаком</option>
+                                </select>
+                            </div>
+
+                            <!-- Поле ввода телефона -->
+                            <div>
+                                <label for="phone" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                                    Ваш номер телефона
+                                </label>
+                                <div class="relative rounded-xl shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <span class="text-gray-400 text-sm">+7</span>
+                                    </div>
+                                    <input type="tel" name="phone" id="phone" required placeholder=" (999) 000-00-00" class="block w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-gray-800 placeholder-gray-400 transition duration-150">
+                                </div>
+                            </div>
+
+                            <!-- Кнопка отправки формы -->
+                            <div class="pt-2">
+                                <button type="submit" class="w-full flex items-center justify-center px-6 py-4 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-red-600 to-indigo-600 hover:from-red-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-lg transform active:scale-95 transition duration-150">
+                                    Получить решение за 5 минут
+                                </button>
+                            </div>
+
+                            <!-- Дисклеймер согласия -->
+                            <p class="text-center text-[10px] text-gray-400 leading-normal pt-2">
+                                Нажимая кнопку, вы соглашаетесь на обработку персональных данных и экспресс-аудит кассовой дисциплины.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+</body>
+</html>

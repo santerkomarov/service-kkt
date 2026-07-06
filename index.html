@@ -3,180 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Удаленная прошивка рабочего места кассира за 25 минут</title>
-    <meta name="description" content="Удаленная прошивка рабочего места кассира за 25 минут. Поддерживаем популярные кассы, работаем официально и дистанционно.">
+    <title>РосКасса Сервис — чеки коррекции и обучение Честному ЗНАКу</title>
+    <meta name="description" content="РосКасса Сервис помогает бизнесу удаленно: чеки коррекции, обучение работе с маркировкой, настройка Честного ЗНАКа и решение кассовых ошибок без штрафов и хаоса.">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .hero-banner {
-            position: relative;
-            min-height: 800px;
-            overflow: hidden;
-            background: #0f172a;
-        }
-
-        .hero-banner img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(1.28) contrast(1.02);
-        }
-
-        .hero-banner::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 100%),
-                linear-gradient(90deg, rgba(7, 20, 43, 0.12) 0%, rgba(7, 20, 43, 0.05) 40%, rgba(7, 20, 43, 0.15) 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            min-height: 520px;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-        }
-
-        .hero-title {
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-        }
-
-        @media (max-width: 768px) {
-            .hero-banner,
-            .hero-content {
-                min-height: 360px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="text-gray-900 font-sans">
 
-    <header class="bg-white shadow border-b border-gray-200">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div class="text-center sm:text-left">
+<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30 backdrop-filter backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
+        <div class="text-center lg:text-left">
+            <a href="index.html">
                 <span class="text-2xl font-black tracking-tight text-blue-600">РосКасса</span>
                 <span class="text-2xl font-light text-gray-500">Сервис</span>
-                <p class="text-xs text-gray-500 mt-0.5">Дистанционное обслуживание ККТ в <span class="font-semibold text-gray-700">Ижевске</span></p>
+            </a>
+            <p class="text-xs text-gray-500 mt-0.5">Удалённая помощь бизнесу по кассам, <br>маркировке и отчетности по всей России</p>
+        </div>
+        <div class="hidden md:flex items-center gap-6 text-sm text-gray-500">
+            <a href="cheki-korrekcii.html"
+                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
+                Чеки коррекции
+            </a>
+
+            <a href="obuchenie-chestnyy-znak.html"
+                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+                Обучение
+            </a>
+
+            <a href=""
+                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-yellow-600 text-white font-semibold shadow-sm hover:bg-yellow-700 transition">
+                заказать обратный звонок
+            </a>
+        </div>
+        <div class="text-center lg:text-right">
+            <a href="tel:+78001112233" class="text-xl font-bold text-gray-900 hover:text-blue-600 transition">8 800 111-22-33</a>
+            <p class="text-xs text-green-600 flex items-center justify-center lg:justify-end mt-0.5">
+                <span class="w-2 h-2 rounded-full bg-green-500 inline-block mr-2"></span>Инженер на связи — ответим за 5 минут
+            </p>
+        </div>
+    </div>
+</header>
+
+<div class="main">
+    <img src="img/main2.jpg" alt="">
+    <div class="main-slogan-check">
+        Исправляем <span class="span-slogan-check">чеки коррекции</span>
+    </div>
+    <div class="main-slogan-lesson">
+        Обучаем работе с <span class="span-slogan-lesson">маркировкой</span>
+    </div>
+</div>
+
+<section id="problems" class="py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="section-kicker">Зачем обращаются к нам</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-4">Мы решаем не “абстрактные услуги”, <br> а реальные проблемы бизнеса</h2>
+            <p class="text-gray-600 text-lg mt-4 leading-relaxed">
+                Когда касса ошибается, сотрудники путаются в маркировке, а бухгалтерия хочет уверенности в каждом чеке, нужен не формальный подрядчик, а спокойная команда, которая быстро подключится и разложит ситуацию по шагам.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div class="problem-card">
+                <div class="problem-icon" style="background:#fff1f2;color:#e11d48;">💸</div>
+                <h3 class="text-xl font-bold">Снимаем риск штрафов</h3>
+                <p class="text-gray-600 mt-3 leading-relaxed">Исправляем чеки, теги и расхождения до того, как ситуация превращается в претензию от ФНС или проблему по ОФД.</p>
             </div>
-            <div class="hidden md:block text-center text-sm text-gray-500">
-                <p class="font-medium text-gray-700">Работаем по всей России</p>
-                <p>Ежедневно, в будни</p>
+            <div class="problem-card">
+                <div class="problem-icon" style="background:#eff6ff;color:#2563eb;">🧾</div>
+                <h3 class="text-xl font-bold">Разбираем кассовый хаос</h3>
+                <p class="text-gray-600 mt-3 leading-relaxed">Перепутали нал и безнал, неверно указали СНО, забыли пробить чек или зависла касса — поможем быстро и удаленно.</p>
             </div>
-            <div class="text-center sm:text-right">
-                <a href="tel:+79991112233" class="text-xl font-bold text-gray-900 hover:text-blue-600 transition">8 800 111-22-33</a>
-                <p class="text-xs text-green-600 flex items-center justify-center sm:justify-end mt-0.5">
-                    <span class="w-2 h-2 rounded-full bg-green-500 inline-block mr-2"></span>Инженер на связи
-                </p>
+            <div class="problem-card">
+                <div class="problem-icon" style="background:#ecfeff;color:#0891b2;">🏷️</div>
+                <h3 class="text-xl font-bold">Учим маркировке без стресса</h3>
+                <p class="text-gray-600 mt-3 leading-relaxed">Объясняем Честный ЗНАК, ЭДО и 1С простыми словами, чтобы кассиры, бухгалтеры и склад не допускали дорогих ошибок.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon" style="background:#ecfdf5;color:#16a34a;">🤝</div>
+                <h3 class="text-xl font-bold">Контроль и предсказуемость</h3>
+                <p class="text-gray-600 mt-3 leading-relaxed">Вы заранее видите план действий, сроки и результат. Никаких сюрпризов, только работающий порядок.</p>
             </div>
         </div>
-    </header>
 
-    <section class="w-full">
-        <div class="hero-banner">
-            <img src="img/hero-banner.png" alt="Удаленная прошивка кассового рабочего места" width="1672" height="941">
-            <div class="hero-content max-w-6xl mx-auto px-4 py-10 md:py-14">
-                <div class="w-full text-center">
-                    <span class="inline-flex bg-white bg-opacity-90 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Удаленное обслуживание</span>
-                    <h1 class="hero-title mt-5 text-white text-3xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
-                        Удаленная прошивка рабочего места кассира за 25 минут
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 py-8">
-        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
-            <div class="space-y-3">
-                <div class="flex items-start text-sm md:text-base text-gray-700">
-                    <span class="text-green-500 font-bold mr-3">✓</span>
-                    <span>Поддерживаем 99% касс: Эвотор, Атол, Штрих-М, МТС</span>
-                </div>
-                <div class="flex items-start text-sm md:text-base text-gray-700">
-                    <span class="text-green-500 font-bold mr-3">✓</span>
-                    <span>Официальный договор и закрывающие документы</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-3xl mx-auto px-4 pb-14">
-        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-            <h2 class="text-2xl font-bold text-gray-900 mb-2">Узнать стоимость прошивки</h2>
-            <p class="text-sm text-gray-500 mb-6">Оставьте заявку, инженер свяжется с вами в течение 5 минут для расчета точной цены.</p>
-
-            <form onsubmit="alert('Тестовая отправка формы успешна!'); return false;" class="space-y-4">
+        <div class="cta-band mt-10 p-8 md:p-10">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
                 <div>
-                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Производитель вашей кассы</label>
-                    <select required class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none text-sm focus:border-blue-500 bg-white cursor-pointer appearance-none">
-                        <option value="" disabled selected hidden>-- Выберите марку кассы --</option>
-                        <option value="atol">Атол (Кассовые регистраторы)</option>
-                        <option value="evotor">Эвотор (Смарт-терминалы)</option>
-                        <option value="shtrih">Штрих-М (Классические кассы)</option>
-                        <option value="mts">МТС Касса (Мобильные терминалы)</option>
-                        <option value="other">Другой производитель</option>
-                    </select>
+                    <h3 class="text-2xl md:text-3xl font-extrabold">Более подробно смотрите по ссылкам:</h3>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Ваш номер телефона</label>
-                    <input type="tel" required placeholder="+7 (999) 000-00-00" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none text-sm focus:border-blue-500">
-                </div>
-
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-lg shadow-md cursor-pointer text-sm transition">
-                    Получить расчет за 5 минут
-                </button>
-
-                <p class="text-xs text-center text-gray-400 mt-3">
-                    Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
-                </p>
-            </form>
-        </div>
-    </section>
-
-    <section class="bg-white border-t border-b border-gray-200 py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center text-gray-900 mb-12">Как происходит удаленное обновление в Ижевске</h2>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center p-4">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-black text-lg mx-auto mb-4">1</div>
-                    <h4 class="font-bold text-gray-900 mb-1">Заявка</h4>
-                    <p class="text-sm text-gray-500">Вы оставляете модель кассы, и мы фиксируем за вами дежурного инженера.</p>
-                </div>
-                <div class="text-center p-4">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-black text-lg mx-auto mb-4">2</div>
-                    <h4 class="font-bold text-gray-900 mb-1">Подключение</h4>
-                    <p class="text-sm text-gray-500">Вы запускаете программу AnyDesk или TeamViewer на компьютере за 1 минуту.</p>
-                </div>
-                <div class="text-center p-4">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-black text-lg mx-auto mb-4">3</div>
-                    <h4 class="font-bold text-gray-900 mb-1">Прошивка</h4>
-                    <p class="text-sm text-gray-500">Наш специалист удаленно устанавливает актуальное ПО и обновляет кассу.</p>
-                </div>
-                <div class="text-center p-4">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-black text-lg mx-auto mb-4">4</div>
-                    <h4 class="font-bold text-gray-900 mb-1">Тест и чек</h4>
-                    <p class="text-sm text-gray-500">Проверяем прошивку, печатаем тестовый чек по новым правилам.</p>
+                <div class="flex flex-wrap lg:justify-end gap-3">
+                    <a href="cheki-korrekcii.html" class="btn-secondary" style="background:#fff;color:#1d4ed8;padding:14px 28px;font-size:18px;display:inline-flex;align-items:center;gap:10px;">
+                        Чеки коррекции
+                <span style="font-size: 20px; line-height: 1;">📄</span>
+                    </a>
+                    <a href="obuchenie-chestnyy-znak.html" class="btn-secondary" style="background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.35);padding:14px 28px;font-size:18px;display:inline-flex;align-items:center;gap:10px;">
+                        Обучение ЧЗ
+                        <img src="img/logo-znak.png" alt="" style="width:30px;height: 30px;">
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="bg-gray-900 text-gray-400 text-xs py-8">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-center md:text-left">
-                <p>© 2026 РосКасса-Сервис РФ. Все права защищены.</p>
-            </div>
-            <div class="text-center md:text-right">
-                <p>Email для связи: <a href="mailto:info@vash-site.ru" class="text-white hover:underline">info@vash-site.ru</a></p>
-            </div>
+<section id="faq" class="pb-16 md:pb-20">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="section-kicker">Часто задаваемые вопросы</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-4">Частые вопросы от клиентов</h2>
+            <p class="text-gray-600 text-lg mt-4 leading-relaxed">Собрали короткие ответы на самые частые сомнения, чтобы вам было проще понять, подходит ли вам такой формат помощи.</p>
         </div>
-    </footer>
+
+        <div class="space-y-4">
+            <details class="faq-item" open>
+                <summary class="faq-q">Вы действительно работаете удаленно по всей России?<span class="text-blue-600">＋</span></summary>
+                <div class="faq-a">Да. Подключаемся удаленно через AnyDesk или TeamViewer, поэтому можем помочь бизнесу в любом городе России. Такой формат особенно удобен, когда проблему нужно решить срочно, без ожидания выезда специалиста.</div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-q">Чем вы полезны, если у нас уже есть бухгалтер или айтишник?<span class="text-blue-600">＋</span></summary>
+                <div class="faq-a">Мы не заменяем вашу команду, а усиливаем её. Помогаем там, где нужны практические знания по ККТ, ФФД 1.2, маркировке, ОФД, Честному ЗНАКу и кассовым ошибкам. Часто мы просто быстрее находим причину и даем рабочий алгоритм.</div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-q">Что делать, если ошибка уже есть и проверка ФНС кажется близкой?<span class="text-blue-600">＋</span></summary>
+                <div class="faq-a">Не затягивать. Чем раньше разобраться с причиной и оформить корректные действия, тем меньше риск для бизнеса. На странице услуги по чекам коррекции мы как раз показываем, в каких ситуациях можем помочь удаленно.</div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-q">Обучение Честному ЗНАКу — это теория или практика?<span class="text-blue-600">＋</span></summary>
+                <div class="faq-a">Это практическая онлайн-работа. Мы показываем, как делать операции в интерфейсах, разбираем ваши процессы и ошибки персонала, а не читаем абстрактную лекцию по регламентам.</div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-gray-900 text-gray-300 py-10">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 items-start">
+        <div>
+            <div class="text-2xl font-black text-white">РосКасса <span class="font-light text-gray-400">Сервис</span></div>
+            <p class="text-sm text-gray-400 mt-3 leading-relaxed">Удаленная помощь по ККТ, маркировке и кассовым ошибкам. Для тех, кому нужен спокойный, понятный и быстрый сервис.</p>
+        </div>
+        <div>
+            <h3 class="text-white font-semibold mb-3">Разделы</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="cheki-korrekcii.html" class="hover:text-white">Чеки коррекции</a></li>
+                <li><a href="obuchenie-chestnyy-znak.html" class="hover:text-white">Обучение Честному ЗНАКу</a></li>
+                <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-white font-semibold mb-3">Контакты</h3>
+            <p class="text-sm text-gray-400">8 800 111-22-33</p>
+            <p class="text-sm text-gray-400 mt-2">info@vash-site.ru</p>
+            <p class="text-xs text-gray-500 mt-4">© 2026 РосКасса-Сервис РФ. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
