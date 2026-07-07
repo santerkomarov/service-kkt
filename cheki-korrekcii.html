@@ -226,6 +226,110 @@
     </div>
 </main>
 
+<div class="simulator-container">
+    <!-- ЛЕВАЯ СТОРОНА: Форма ввода (Интерфейс кассы) -->
+    <div class="form-side">
+        <h2>Интерактивный симулятор заполнения тегов по ФФД 1.2</h2>
+        <p style="color: #64748b; font-size: 14px; margin-bottom: 25px;">Проверьте корректность заполнения тегов. Ошибки приведут к отказу со стороны ФНС.</p>
+        
+        <div class="form-group">
+            <label>Тип коррекции (Признак расчета)</label>
+            <select id="pr-rascheta">
+                <option value="ПРИХОД">Приход (Исправление излишка)</option>
+                <option value="ВОЗВРАТ ПРИХОДА" selected>Возврат прихода (Аннулирование ошибки)</option>
+            </select>
+        </div>
+
+        <div class="row-grid">
+            <div class="form-group" id="group-date">
+                <label>Дата ошибки (Тег 1178)</label>
+                <input type="date" id="corr-date" value="2023-10-18">
+                <div class="error-tip">Ошибка не может быть из будущего! ФНС заблокирует такой документ.</div>
+            </div>
+            <div class="form-group" id="group-fp">
+                <label>ФП старого чека (Тег 1192)</label>
+                <input type="text" id="tag-1192" placeholder="10 цифр" value="0315734359" maxlength="10">
+                <div class="error-tip">Тег 1192 должен состоять строго из 10 цифр! Без него невозможно связать каскад чеков.</div>
+            </div>
+        </div>
+
+        <div class="form-group" id="group-name">
+            <label>Наименование товара</label>
+            <input type="text" id="item-name" value="Чипсы с беконом LAYS">
+            <div class="error-tip">По ФФД 1.2 нельзя делать коррекцию «одной общей суммой». Обязательно укажите конкретный товар!</div>
+        </div>
+
+        <div class="row-grid">
+            <div class="form-group" id="group-price">
+                <label>Цена за единицу</label>
+                <input type="number" id="item-price" value="5.50" step="0.01" min="0.01">
+                <div class="error-tip">Цена должна быть больше нуля.</div>
+            </div>
+            <div class="form-group" id="group-qty">
+                <label>Количество</label>
+                <input type="number" id="item-qty" value="2.345" step="0.001" min="0.001">
+                <div class="error-tip">Количество должно быть больше нуля.</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Способ оплаты</label>
+            <select id="pay-type">
+                <option value="НАЛИЧНЫМИ">Наличными</option>
+                <option value="БЕЗНАЛИЧНЫМИ">Безналичными (Карта/СБП)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- ПРАВАЯ СТОРОНА: Живой интерактивный чек -->
+    <div class="receipt-side">
+        <h3>Предпросмотр документа</h3>
+        
+        <div class="receipt" id="receipt-bill">
+            <div class="receipt-title">Онлайн-Касса</div>
+            <div class="receipt-subtitle">Чек коррекции</div>
+            
+            <div>Осн. для корр.: <span id="view-date">18.10.23</span></div>
+            <div>Тип коррекции: Самостоятельно</div>
+            <div class="divider"></div>
+            
+            <div id="view-item-name" class="bold">Чипсы с беконом LAYS</div>
+            <div class="flex-row">
+                <div><span id="view-price">5.50</span> * <span id="view-qty">2.345</span></div>
+                <div id="view-total">-12.90</div>
+            </div>
+            <div>НДС 20%</div>
+            <div>ПРЕДОПЛАТА 100%</div>
+            
+            <div class="divider"></div>
+            <div class="flex-row bold" style="font-size: 15px;">
+                <div>ИТОГ</div>
+                <div id="view-total-bold">-12.90</div>
+            </div>
+            
+            <div class="flex-row">
+                <div>СУММА НДС 20%</div>
+                <div id="view-nds">-2.15</div>
+            </div>
+            <div class="flex-row">
+                <div id="view-pay-label">НАЛИЧНЫМИ</div>
+                <div id="view-pay-value">-12.90</div>
+            </div>
+            
+            <div class="divider"></div>
+            <div>ЗН ККТ 00106121280601</div>
+            <div>ИНН 7736570901</div>
+            <div>ФД 419</div>
+            <div class="bold">ФП <span id="view-fp">0315734359</span></div>
+            <div class="bold" id="view-pr-label">ВОЗВРАТ ПРИХОДА</div>
+        </div>
+
+        <div class="promo-box" id="promo-info">
+            🟢 Чек сформирован верно. Каскад готов к отправке в ФНС.
+        </div>
+    </div>
+</div>
+
 <footer class="bg-gray-900 text-gray-300 py-10">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 items-start">
         <div><div class="text-2xl font-black text-white">РосКасса <span class="font-light text-gray-400">Сервис</span></div><p class="text-sm text-gray-400 mt-3">Практическая удалённая помощь бизнесу по ККТ и маркировке.</p></div>
@@ -233,4 +337,82 @@
         <div><h3 class="text-white font-semibold mb-3">Контакты</h3><p class="text-sm text-gray-400">8 800 111-22-33</p><p class="text-sm text-gray-400 mt-2">info@vash-site.ru</p></div>
     </div>
 </footer>
+
+<script>
+    const inputs = ['pr-rascheta', 'corr-date', 'tag-1192', 'item-name', 'item-price', 'item-qty', 'pay-type'];
+    
+    function validateAndUpdate() {
+        let isFormValid = true;
+
+        // Элементы
+        const prRascheta = document.getElementById('pr-rascheta').value;
+        const corrDateInput = document.getElementById('corr-date').value;
+        const fpInput = document.getElementById('tag-1192').value;
+        const nameInput = document.getElementById('item-name').value.trim();
+        const priceInput = parseFloat(document.getElementById('item-price').value) || 0;
+        const qtyInput = parseFloat(document.getElementById('item-qty').value) || 0;
+        const payType = document.getElementById('pay-type').value;
+
+        // Сброс всех классов ошибок
+        document.querySelectorAll('.form-group').forEach(el => el.classList.remove('has-error'));
+
+        // 1. Валидация ФП (Тег 1192) - строго 10 цифр
+        const fpRegex = /^\d{10}$/;
+        if (!fpRegex.test(fpInput)) {
+            document.getElementById('group-fp').classList.add('has-error');
+            isFormValid = false;
+        }
+            // 2. Валидация Названия (не пустое)
+            if (nameInput === "") {
+                document.getElementById('group-name').classList.add('has-error');isFormValid = false;
+            }
+            // 3. Валидация Даты (не из будущего)
+            const today = new Date().toISOString().split('T')[0];
+            if (corrDateInput > today || !corrDateInput) {document.getElementById('group-date').classList.add('has-error');
+            isFormValid = false;
+        }
+        // 4. Валидация числовых значений
+        if (priceInput <= 0) {
+            document.getElementById('group-price').classList.add('has-error');
+            isFormValid = false;
+        }
+        if (qtyInput <= 0) {
+            document.getElementById('group-qty').classList.add('has-error');
+            isFormValid = false;
+        }
+        // Логика визуального отображения чека
+        const receiptBill = document.getElementById('receipt-bill');
+        const promoInfo = document.getElementById('promo-info');
+        if (!isFormValid) {
+            receiptBill.classList.add('invalid');
+            promoInfo.innerHTML = "❌ Кассовая ошибка! Исправьте поля, подсвеченные красным, иначе чек не пройдет проверку ФНС.";
+            promoInfo.style.color = "var(--danger)";
+            promoInfo.style.borderColor = "var(--danger)";
+            promoInfo.style.background = "var(--danger-bg)";
+            return;
+        }
+        // Если всё валидно — убираем блокировку чека и обновляем данные
+        receiptBill.classList.remove('invalid');
+        promoInfo.innerHTML = "🟢 Чек сформирован верно. Данные синхронизированы по правилам ФФД 1.2.";
+        promoInfo.style.color = "#16a34a";promoInfo.style.borderColor = "#16a34a";
+        promoInfo.style.background = "#f0fdf4";
+        // Форматирование даты для чека
+        const formattedDate = new Date(corrDateInput).toLocaleDateString('ru-RU');
+        // Расчет финансовых итогов
+        let total = priceInput * qtyInput;let nds = total * 0.20; 
+        // 20% НДС
+        const sign = (prRascheta === "ВОЗВРАТ ПРИХОДА") ? "-" : "";
+        // Отрисовка значений в чек
+        document.getElementById('view-date').innerText = formattedDate;document.getElementById('view-fp').innerText = fpInput;
+        document.getElementById('view-item-name').innerText = nameInput;document.getElementById('view-price').innerText = priceInput.toFixed(2);
+        document.getElementById('view-qty').innerText = qtyInput;document.getElementById('view-total').innerText = sign + total.toFixed(2);
+        document.getElementById('view-total-bold').innerText = sign + total.toFixed(2);
+        document.getElementById('view-nds').innerText = sign + nds.toFixed(2);document.getElementById('view-pay-label').innerText = payType;
+        document.getElementById('view-pay-value').innerText = sign + total.toFixed(2);document.getElementById('view-pr-label').innerText = prRascheta;
+    }
+    // Привязываем живую валидацию на ввод данных
+    inputs.forEach(id => {document.getElementById(id).addEventListener('input', validateAndUpdate);});
+</script>
+
+</body>
 </html>
