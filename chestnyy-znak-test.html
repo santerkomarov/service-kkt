@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Тест + калькулятор стоимости маркировки «Честный знак»</title>
+  <meta name="description" content="Пройдите тест, узнайте, нужна ли маркировка, и сразу получите ориентировочную стоимость внедрения.»" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+  <!-- Header -->
+<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30 backdrop-filter backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
+        <div class="text-center lg:text-left">
+            <a href="index.html">
+                <span class="text-2xl font-black tracking-tight text-blue-600">Кассовый</span>
+                <span class="text-2xl font-light text-gray-500">Эксперт</span>
+            </a>
+            <p class="text-xs text-gray-500 mt-0.5">Удалённая помощь бизнесу по кассам, <br>маркировке и отчетности по всей России</p>
+        </div>
+        <div class="hidden md:flex items-center gap-6 text-sm text-gray-500">
+            <a href="cheki-korrekcii.html"
+                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
+                Чеки коррекции
+            </a>
+
+            <a href="checki-korrekcii-test.html"
+                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
+                Тест чеки коррекции 
+            </a>
+
+            <a href="obuchenie-chestnyy-znak.html"
+                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+                Обучение маркировке
+            </a>
+
+            <a href="chestnyy-znak-test.html"
+                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+                Тест маркировки
+            </a>
+        </div>
+        <div class="text-center lg:text-right">
+            <a href="tel:+78001112233" class="text-base font-bold text-gray-400 hover:text-blue-600 transition">8 800 111-22-33</a>
+        </div>
+    </div>
+</header>
+
+  <main>
+    <!-- Hero -->
+    <section class="max-w-7xl mx-auto px-4 py-16 grid lg:grid-cols-1 gap-10 items-center">
+      <div>
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-sm">
+          Проверьте за 3 минуты: нужна маркировка и сколько это стоит
+        </div>
+
+        <h1 class="mt-5 text-4xl md:text-5xl font-extrabold leading-tight">
+          Узнайте, нужна ли вашей компании маркировка, и сразу получите ориентировочную стоимость внедрения
+        </h1>
+
+        <p class="mt-5 text-lg text-slate-600 max-w-2xl">
+          Пройдите тест из 12 вопросов → получите оценку риска → рассчитайте ориентировочную стоимость внедрения маркировки в вашей конкретной ситуации.
+        </p>
+
+        <ul class="mt-8 space-y-3 text-slate-700">
+          <li class="flex gap-3"><span class="text-emerald-600 font-bold">✓</span><span>Тест показывает вероятность обязательной маркировки.</span></li>
+          <li class="flex gap-3"><span class="text-emerald-600 font-bold">✓</span><span>Калькулятор оценивает стоимость внедрения именно для вашей ситуации.</span></li>
+          <li class="flex gap-3"><span class="text-emerald-600 font-bold">✓</span><span>Вы получаете план действий и предложение консультации.</span></li>
+        </ul>
+
+        <div class="mt-8 flex flex-wrap gap-4 justify-center">
+          <a href="#quiz" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition text-center">
+            Пройти тест и рассчитать стоимость
+          </a>
+        </div>
+
+        
+      </div>
+
+      <!-- <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8">
+        <h2 class="text-2xl font-bold text-slate-900">Как это работает</h2>
+        <ol class="mt-6 space-y-4 text-slate-700">
+          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">1</span><span>Отвечаете на 12 вопросов о деятельности и категориях товаров.</span></li>
+          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">2</span><span>Система оценивает риск обязательной маркировки.</span></li>
+          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">3</span><span>Рассчитываются ориентировочные затраты на внедрение.</span></li>
+          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">4</span><span>Вы получаете результат и предложение консультации.</span></li>
+        </ol>
+      </div> -->
+    </section>
+
+    <!-- Risks -->
+    <section id="risks" class="max-w-7xl mx-auto px-4 py-12">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-pink-600">Почему отсутствие маркировки может быть рискованным</h2>
+        <p class="mt-4 text-lg text-slate-600">
+          Для ряда товаров обязательная маркировка установлена законом. Если товар попадает в обязательную маркировку и вы его продаёте без кодов, возможны штрафы, изъятие товара и другие последствия.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <div class="bg-white rounded-2xl border p-6 shadow-sm border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-slate-900">Штрафы и санкции</h3>
+          <p class="mt-3 text-slate-600">
+            Нарушение требований по маркировке может привести к штрафам и административным последствиям для организации и руководителей.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border  p-6 shadow-sm border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-slate-900">Изъятие товара</h3>
+          <p class="mt-3 text-slate-600">
+            В ряде случаев товар может быть изъят из оборота, и продажа его без маркировки может стать основанием для блокировки деятельности.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border p-6 shadow-sm border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-slate-900">Проблемы на маркетплейсах</h3>
+          <p class="mt-3 text-slate-600">
+            Многие маркетплейсы и крупные покупатели требуют обязательной маркировки. Без неё могут быть ограничения на продажи и поставку.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="max-w-4xl mx-auto px-4 py-8">
+      <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
+        <div class="flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <h2 class="text-3xl font-extrabold text-slate-900">Пройдите тест</h2>
+            <p class="mt-2 text-slate-600">12 вопросов помогут понять, нужна ли вашей компании обязательная маркировка.</p>
+          </div>
+          <div class="text-sm font-semibold text-slate-500" id="progressText">Вопрос 1 из 12</div>
+        </div>
+
+        <div class="mt-5 w-full bg-slate-200 rounded-full h-3 overflow-hidden">
+          <div id="progressBar" class="h-3 bg-emerald-600 rounded-full transition-all duration-300" style="width: 8.33%;"></div>
+        </div>
+
+        <form id="quizForm" class="mt-8 space-y-8">
+          <div class="question-card" data-step="1">
+            <h3 class="text-xl font-bold text-slate-900">1. Вы производите или импортируете товары?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q1" value="1" class="mt-1"> Да, производим</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q1" value="1" class="mt-1"> Да, импортируем</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q1" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="2">
+            <h3 class="text-xl font-bold text-slate-900">2. Вы продаёте товары онлайн (через свой сайт, маркетплейсы, соцсети)?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q2" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q2" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="3">
+            <h3 class="text-xl font-bold text-slate-900">3. Вы работаете с розничными магазинами или дистрибьюторами?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q3" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q3" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="4">
+            <h3 class="text-xl font-bold text-slate-900">4. Вы работаете на маркетплейсах (Ozon, Wildberries, Яндекс.Маркет и др.)?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q4" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q4" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="5">
+            <h3 class="text-xl font-bold text-slate-900">5. Вы работали с товарами из категорий: обувь, одежда, текстиль?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q5" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q5" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="6">
+            <h3 class="text-xl font-bold text-slate-900">6. Вы работаюте с товарами из категорий: электроника, фототехника, бытовая техника?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q6" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q6" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="7">
+            <h3 class="text-xl font-bold text-slate-900">7. Вы работаюте с товарами из категорий: лёгкая промышленность,_, парфюмерия?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q7" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q7" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="8">
+            <h3 class="text-xl font-bold text-slate-900">8. Вы работете с товарами из категорий: шины, дорогая одежда, молочные продукты?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q8" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q8" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="9">
+            <h3 class="text-xl font-bold text-slate-900">9. Вы получали от маркетплейса или покупателя требование о маркировке?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q9" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q9" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="10">
+            <h3 class="text-xl font-bold text-slate-900">10. Вы слышали о «Честном знаке» и обязательной маркировке?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q10" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q10" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="11">
+            <h3 class="text-xl font-bold text-slate-900">11. Вы понимаете, что именно нужно для начала работы с маркировкой?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q11" value="0" class="mt-1"> Да, понимаю</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q11" value="1" class="mt-1"> Нет, не понимаю</label>
+            </div>
+          </div>
+
+          <div class="question-card hidden" data-step="12">
+            <h3 class="text-xl font-bold text-slate-900">12. Хотели бы вы узнать ориентировочную стоимость внедрения маркировки?</h3>
+            <div class="mt-4 space-y-3">
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q12" value="1" class="mt-1"> Да</label>
+              <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q12" value="0" class="mt-1"> Нет</label>
+            </div>
+          </div>
+
+          <div class="flex gap-4 pt-2">
+            <button type="button" id="prevBtn" class="px-6 py-3 rounded-xl bg-slate-200 font-semibold hover:bg-slate-300 transition">Назад</button>
+            <button type="button" id="nextBtn" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition">Далее</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Calculator -->
+    <section id="calculator" class="max-w-4xl mx-auto px-4 py-8 hidden">
+      <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
+        <h2 class="text-3xl font-extrabold text-slate-900">Ориентировочная стоимость внедрения маркировки</h2>
+        <p class="mt-2 text-slate-600">
+          Рассчитайте приблизительную стоимость внедрения маркировки в вашей ситуации.
+        </p>
+
+        <form id="calcForm" class="mt-8 grid gap-6">
+          <div>
+            <label class="text-lg font-semibold text-slate-900">1. Какой приблизительный объём товарных единиц в месяц?</label>
+            <div class="mt-3 flex flex-wrap gap-3">
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="volume" value="1" class="mt-1"> менее 100</label>
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="volume" value="1.3" class="mt-1"> 100–500</label>
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="volume" value="1.6" class="mt-1"> 500–2000</label>
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="volume" value="2" class="mt-1"> более 2000</label>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-lg font-semibold text-slate-900">2. Тип деятельности</label>
+            <div class="mt-3 flex flex-wrap gap-3">
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="activity" value="1" class="mt-1"> только производитель</label>
+              <label class="flex gap-3 px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="activity" value="1.2" class="mt-1"> только импортер</label>
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="activity" value="1.3" class="mt-1"> производитель + импортер</label>
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="activity" value="1.1" class="mt-1"> перепродавец</label>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-lg font-semibold text-slate-900">3. Каналы продаж</label>
+            <div class="mt-3 flex flex-wrap gap-3">
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="channels" value="1" class="mt-1"> только собственный сайт/офлайн</label>
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="channels" value="1.2" class="mt-1"> маркетплейсы</label>
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="channels" value="1.3" class="mt-1"> маркетплейсы + дистрибьюторы</label>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-lg font-semibold text-slate-900">4. Нужна интеграция с 1С/ERP/CRM?</label>
+            <div class="mt-3 flex flex-wrap gap-3">
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="int" value="0" class="mt-1"> Нет</label>
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="int" value="1" class="mt-1"> Да</label>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-lg font-semibold text-slate-900">5. Требуется помощь с документами и обучением?</label>
+            <div class="mt-3 flex flex-wrap gap-3">
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="train" value="0" class="mt-1"> Нет</label>
+              <label class="px-4 py-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50"><input type="radio" name="train" value="1" class="mt-1"> Да</label>
+            </div>
+          </div>
+
+          <div class="bg-emerald-50 rounded-2xl border border-emerald-100 p-6">
+            <div class="text-sm font-semibold uppercase tracking-wider text-emerald-700">Ориентировочная стоимость</div>
+            <div class="mt-2 text-4xl font-extrabold text-emerald-700" id="totalPrice">0 ₽</div>
+            <p class="mt-2 text-emerald-700">
+              Это приблизительная оценка. Для точной сметы запишите на консультацию.
+            </p>
+          </div>
+
+          <div class="flex gap-4">
+            <button type="button" id="calcBack" class="px-6 py-3 rounded-xl bg-slate-200 font-semibold hover:bg-slate-300 transition">Вернуться к тесту</button>
+            <a href="#lead" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition">Записаться на консультацию</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Result -->
+    <section id="result" class="max-w-4xl mx-auto px-4 py-12 hidden">
+      <div id="riskBox" class="rounded-3xl p-8 border-l-8 bg-white shadow-lg border-slate-200">
+        <h2 id="resultTitle" class="text-3xl font-extrabold text-slate-900">Ваш результат</h2>
+        <p id="resultSubtitle" class="mt-2 text-slate-600"></p>
+        <p id="riskText" class="mt-5 text-lg font-semibold text-slate-900"></p>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h3 class="text-xl font-bold text-slate-900">Результат</h3>
+          <p id="meaningText" class="mt-3 text-slate-600"></p>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h3 class="text-xl font-bold text-slate-900">Рекомендация</h3>
+          <p id="recommendText" class="mt-3 text-slate-600"></p>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+        <h3 class="text-2xl font-bold text-slate-900">Получить детальную смету и консультацию</h3>
+        <p class="mt-2 text-slate-600">
+          Оставьте контакт, и мы предложим детальную смету и консультацию по маркировке в вашей ситуации.
+        </p>
+
+        <form id="leadForm" class="mt-6 grid gap-4">
+          <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border border-slate-300" />
+          <input type="tel" name="phone" placeholder="Телефон" class="w-full px-4 py-3 rounded-xl border border-slate-300" />
+          <input type="text" name="company" placeholder="Организация" class="w-full px-4 py-3 rounded-xl border border-slate-300" />
+          <textarea name="comment" placeholder="Коротко опишите вашу ситуацию" class="w-full px-4 py-3 rounded-xl border border-slate-300 min-h-32"></textarea>
+          <button type="submit" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition">
+            Получить консультацию
+          </button>
+          <p class="text-xs text-slate-500">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const totalSteps = 12;
+    let currentStep = 1;
+
+    const cards = Array.from(document.querySelectorAll('.question-card'));
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const quizForm = document.getElementById('quizForm');
+    const quizSection = document.getElementById('quiz');
+    const resultSection = document.getElementById('result');
+    const calculatorSection = document.getElementById('calculator');
+    const calcForm = document.getElementById('calcForm');
+    const calcBack = document.getElementById('calcBack');
+    const leadSection = document.getElementById('lead');
+
+    function showStep(step) {
+      cards.forEach(card => card.classList.add('hidden'));
+      const active = cards.find(card => Number(card.dataset.step) === step);
+      if (active) active.classList.remove('hidden');
+
+      progressBar.style.width = `${(step / totalSteps) * 100}%`;
+      progressText.textContent = `Вопрос ${step} из ${totalSteps}`;
+      prevBtn.style.visibility = step === 1 ? 'hidden' : 'visible';
+      nextBtn.textContent = step === totalSteps ? 'Показать результат и стоимость' : 'Далее';
+    }
+
+    function getStepValue(step) {
+      const selected = quizForm.querySelector(`input[name="q${step}"]:checked`);
+      return selected ? Number(selected.value) : null;
+    }
+
+    function calculateScore() {
+      let score = 0;
+      for (let i = 1; i <= totalSteps; i++) {
+        const value = getStepValue(i);
+        if (value !== null) score += value;
+      }
+      return score;
+    }
+
+    function showResult(score) {
+      quizSection.classList.add('hidden');
+
+      const riskBox = document.getElementById('riskBox');
+      const resultTitle = document.getElementById('resultTitle');
+      const resultSubtitle = document.getElementById('resultSubtitle');
+      const riskText = document.getElementById('riskText');
+      const meaningText = document.getElementById('meaningText');
+      const recommendText = document.getElementById('recommendText');
+
+      if (score <= 4) {
+        riskBox.className = 'rounded-3xl p-8 border-l-8 bg-white shadow-lg border-emerald-500';
+        resultTitle.textContent = 'Вероятность обязательной маркировки низкая';
+        resultSubtitle.textContent = 'По вашим ответам не видно явных признаков, что вы обязаны маркировать товары.';
+        riskText.textContent = 'Возможно, ваша деятельность не попадает в обязательные категории или вы не производите/импортируете товары.';
+        meaningText.textContent = 'Вероятно, маркировка не обязательна в вашей ситуации, но стоит периодически проверять, не изменились ли требования.';
+        recommendText.textContent = 'Рекомендуем короткую консультацию, чтобы убедиться, что вы правильно классифицировали свою деятельность.';
+      } else if (score <= 8) {
+        riskBox.className = 'rounded-3xl p-8 border-l-8 bg-white shadow-lg border-amber-500';
+        resultTitle.textContent = 'Вероятность обязательной маркировки средняя';
+        resultSubtitle.textContent = 'По вашим ответам есть признаки, что вы можете попадать в обязательную маркировку.';
+        riskText.textContent = 'Возможно, часть товаров уже должна быть маркирована, а вы этого не реализовали.';
+        meaningText.textContent = 'Стоит провести детальный разбор вашей деятельности и категорий товаров, чтобы понять степень риска.';
+        recommendText.textContent = 'Рекомендуем консультацию по категориям маркировки и первому шагу в системе «Честный знак».';
+      } else {
+        riskBox.className = 'rounded-3xl p-8 border-l-8 bg-white shadow-lg border-red-500';
+        resultTitle.textContent = 'Вероятность обязательной маркировки высокая';
+        resultSubtitle.textContent = 'По вашим ответам видно, что вы, скорее всего, обязаны маркировать товары.';
+        riskText.textContent = 'Ситуация может требовать работы с документами, процессами и интеграциями в систему маркировки.';
+        meaningText.textContent = 'Ваша деятельность, скорее всего, попадает в обязательную маркировку, и отсутствие маркировки может создать риски.';
+        recommendText.textContent = 'Рекомендуем срочную консультацию и планирование процессов маркировки, чтобы избежать штрафов и проблем.';
+      }
+
+      resultSection.classList.remove('hidden');
+      calculatorSection.classList.remove('hidden');
+      resultSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    nextBtn.addEventListener('click', () => {
+      const value = getStepValue(currentStep);
+      if (value === null) {
+        alert('Пожалуйста, выберите ответ.');
+        return;
+      }
+
+      if (currentStep < totalSteps) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        showResult(calculateScore());
+        calcCalculator();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+
+    calcBack.addEventListener('click', () => {
+      calculatorSection.classList.add('hidden');
+      quizSection.classList.remove('hidden');
+    });
+
+    function calcCalculator() {
+      const volume = calcForm.querySelector('input[name="volume"]:checked');
+      const activity = calcForm.querySelector('input[name="activity"]:checked');
+      const channels = calcForm.querySelector('input[name="channels"]:checked');
+      const int = calcForm.querySelector('input[name="int"]:checked');
+      const train = calcForm.querySelector('input[name="train"]:checked');
+      const totalPriceEl = document.getElementById('totalPrice');
+
+      if (!volume || !activity || !channels || !int || !train) {
+        totalPriceEl.textContent = '0 ₽';
+        return;
+      }
+
+      const base = 30000;
+      const volMult = Number(volume.value);
+      const actMult = Number(activity.value);
+      const chanMult = Number(channels.value);
+      const intCost = Number(int.value) ? 35000 : 0;
+      const trainCost = Number(train.value) ? 10000 : 0;
+
+      const total = (base * volMult * actMult * chanMult) + intCost + trainCost;
+      totalPriceEl.textContent = `${Math.round(total)} ₽`;
+    }
+
+    calcForm.addEventListener('change', calcCalculator);
+
+    document.getElementById('leadForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Заявка отправлена. Здесь подключается отправка в CRM.');
+    });
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>
