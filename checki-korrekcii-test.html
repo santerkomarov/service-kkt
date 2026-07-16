@@ -5,199 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Проверьте, нужны ли вашей организации чеки коррекции</title>
   <meta name="description" content="Пройдите тест из 15 вопросов и получите предварительную оценку риска по чекам коррекции." />
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/script-menu.js"></script>
+  <script src="assets/imask.js" defer></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-  <!-- Header -->
-<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30 backdrop-filter backdrop-blur">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
-        <div class="text-center lg:text-left">
-            <a href="index.html">
-                <span class="text-2xl font-black tracking-tight text-blue-600">Кассовый</span>
-                <span class="text-2xl font-light text-gray-500">Эксперт</span>
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        
+        <div class="shrink-0">
+            <a href="index.html" class="group block">
+                <div class="flex items-baseline gap-1">
+                    <span class="text-xl font-black tracking-tight text-blue-600 transition group-hover:text-blue-700">Кассовый</span>
+                    <span class="text-xl text-gray-500">Эксперт</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-0.5 hidden lg:block">
+                    Удалённая помощь бизнесу по кассам,<br class="hidden lg:block"> маркировке и отчетности по всей России
+                </p>
             </a>
-            <p class="text-xs text-gray-500 mt-0.5">Удалённая помощь бизнесу по кассам, <br>маркировке и отчетности по всей России</p>
         </div>
-        <div class="hidden md:flex items-center gap-6 text-sm text-gray-500">
-            <a href="cheki-korrekcii.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
+        <nav class="hidden lg:flex items-center gap-8 text font-medium">
+            <a href="cheki-korrekcii.html" class="text-gray-600 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full transition-colors">
                 Чеки коррекции
             </a>
-
-            <a href="checki-korrekcii-test.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
-                Тест чеки коррекции 
-            </a>
-
-            <a href="obuchenie-chestnyy-znak.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+            <a href="obuchenie-chestnyy-znak.html" class="text-gray-600 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-600 after:transition-all hover:after:w-full transition-colors">
                 Обучение маркировке
             </a>
-
-            <a href="chestnyy-znak-test.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+            <a href="checki-korrekcii-test.html" class="text-gray-500 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full transition-colors">
+                Тест чеки
+            </a>
+            <a href="chestnyy-znak-test.html" class="text-gray-500 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-600 after:transition-all hover:after:w-full transition-colors">
                 Тест маркировки
             </a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline-block text-xl font-bold text-gray-700 hover:text-blue-600 transition-colors">
+                8 800 111-22-33
+            </span>
+            <button id="mobileMenuBtn" class="lg:hidden p-2 text-gray-600 hover:text-blue-600 focus:outline-none transition-colors" aria-label="Открыть меню">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path id="burgerIcon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
-        <div class="text-center lg:text-right">
-            <a href="tel:+78001112233" class="text-base font-bold text-gray-400 hover:text-blue-600 transition">8 800 111-22-33</a>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-gray-100 bg-white shadow-xl absolute top-full left-0 w-full animate-fade-in">
+        <div class="px-4 py-6 space-y-4 flex flex-col font-medium text-base text-center">
+            <a href="cheki-korrekcii.html" class="py-2 text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition">Чеки коррекции</a>
+            <a href="obuchenie-chestnyy-znak.html" class="py-2 text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition">Обучение маркировке</a>
+            <div class="h-px bg-gray-100 my-1"></div>
+            <a href="checki-korrekcii-test.html" class="py-2 text-gray-700 hover:text-green-600 rounded-lg hover:bg-green-50 transition">Тест чеки коррекции</a>
+            <a href="chestnyy-znak-test.html" class="py-2 text-gray-700 hover:text-green-600 rounded-lg hover:bg-green-50 transition">Тест маркировки</a>
+            <div class="h-px bg-gray-100 my-1"></div>
         </div>
     </div>
 </header>
 
   <main>
-    <!-- Hero -->
-    <!-- <section class="max-w-7xl mx-auto px-4 py-16 grid lg:grid-cols-2 gap-10 items-center"> -->
-    <section class="max-w-7xl mx-auto px-4 py-16 grid lg:grid-cols-1 gap-10 items-center">
+    <section class="max-w-5xl mx-auto py-16 px-4 grid lg:grid-cols-1 gap-10 items-center">
       <div>
-        <div class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-700 font-semibold text-sm">
-          Проверьте за 3 минуты, есть ли у вашей организации риск по чекам коррекции
-        </div>
-
         <h1 class="mt-5 text-4xl md:text-5xl font-extrabold leading-tight">
-          Проверка необходимости в чеках коррекции
+          Проверьте за минуту, есть ли у вашей организации риск по чекам коррекции
         </h1>
 
         <p class="mt-5 text-lg text-slate-600 max-w-2xl">
           Ответьте на 15 коротких вопросов и получите предварительную оценку риска, список возможных проблем и рекомендацию, что делать дальше.
         </p>
         <ul class="mt-8 space-y-3 text-slate-700">
-          <li class="flex gap-3"><span class="text-emerald-600 font-bold">✓</span><span>Подходит для компаний с кассой и расчётами через ККТ.</span></li>
-          <li class="flex gap-3"><span class="text-emerald-600 font-bold">✓</span><span>Помогает выявить признаки ошибок, возвратов, сбоев и непробитых чеков.</span></li>
-          <li class="flex gap-3"><span class="text-emerald-600 font-bold">✓</span><span>В конце вы получите предварительный результат и предложение консультации.</span></li>
+          <li class="flex gap-3"><span class="text-green-600 font-bold">✓</span><span>Подходит для компаний с кассой и расчётами через ККТ.</span></li>
+          <li class="flex gap-3"><span class="text-green-600 font-bold">✓</span><span>Помогает выявить признаки ошибок, возвратов, сбоев и непробитых чеков.</span></li>
+          <li class="flex gap-3"><span class="text-green-600 font-bold">✓</span><span>В конце проверки вы получите предварительный результат.</span></li>
         </ul>
-
-        <div class="mt-8 flex flex-wrap gap-4 justify-center">
-          <a href="#quiz" class="px-6 py-3 rounded-xl bg-blue-600 text-center text-white font-semibold hover:bg-blue-700 transition w-64">
-            Пройти тест
-          </a>
-        </div>
-
-        
-      </div>
-
-      <!-- <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8">
-        <h2 class="text-2xl font-bold text-slate-900">Как это работает</h2>
-        <ol class="mt-6 space-y-4 text-slate-700">
-          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">1</span><span>Отвечаете на 15 простых вопросов.</span></li>
-          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">2</span><span>Система оценивает ваши ответы.</span></li>
-          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">3</span><span>Получаете предварительный риск-профиль.</span></li>
-          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">4</span><span>При необходимости оставляете контакт для консультации.</span></li>
-        </ol>
-      </div> -->
-    </section>
-
-    <!-- Risk block -->
-    <section id="risks" class="max-w-7xl mx-auto px-4 pb-8">
-      <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-pink-600">Почему самостоятельная коррекция чеков может дорого обойтись</h2>
-        <p class="mt-4 text-lg text-slate-600">
-          В чеке коррекции важно учитывать формат ФФД, основание для исправления, реквизиты документа и порядок отражения суммы. Ошибка в одном из пунктов может привести к некорректной корректировке, штрафам и доначислениям.[web:376][web:379][web:350]
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <div class="bg-white rounded-2xl border  p-6 shadow-sm border-l-4 border-red-500">
-          <h3 class="text-xl font-bold text-slate-900">Неверный формат ФФД</h3>
-          <p class="mt-3 text-slate-600">
-            Версии ФФД 1.05, 1.1 и 1.2 требуют разного порядка исправления. Ошибка в выборе формата может сделать корректировку неправильной.[web:376][web:379][web:377]
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl border  p-6 shadow-sm border-l-4 border-red-500">
-          <h3 class="text-xl font-bold text-slate-900">Риск штрафа и доначислений</h3>
-          <p class="mt-3 text-slate-600">
-            Если нарушение раньше обнаружит ФНС, компания может столкнуться не только со штрафом, но и с доначислениями за тот же период.[web:352][web:379]
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl border  p-6 shadow-sm border-l-4 border-red-500">
-          <h3 class="text-xl font-bold text-slate-900">Риск задвоения выручки</h3>
-          <p class="mt-3 text-slate-600">
-            Если не указать корректные реквизиты исходной операции, исправляющий чек могут воспринять как новую продажу. Это создаёт риск ошибочного отражения выручки.[web:352][web:379]
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl border  p-6 shadow-sm border-l-4 border-red-500">
-          <h3 class="text-xl font-bold text-slate-900">Массовая ошибка = недели ручной работы</h3>
-          <p class="mt-3 text-slate-600">
-            Если ошибка повторялась системно, исправлять придётся каждый случай отдельно. При большом объёме это занимает много времени и повышает риск новых ошибок.[web:350][web:379]
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Trust -->
-    <section class="max-w-7xl mx-auto px-4 py-12">
-      <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10">
-        <div class="max-w-3xl">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Почему нам доверяют ?</h2>
-          <p class="mt-4 text-lg text-slate-600">
-            Мы работаем с точечными и массовыми корректировками, помогаем определить правильный порядок исправления, готовим обоснование и сопровождаем процесс без остановки бизнеса.[web:350][web:379][web:381]
-          </p>
-        </div>
-
-        <div class="mt-8 grid gap-4 md:grid-cols-3">
-          <div class="bg-blue-50 rounded-2xl p-5 border border-blue-100">
-            <div class="font-bold text-lg text-slate-900">Разбираем сложные случаи</div>
-            <div class="mt-2 text-slate-600">ФФД 1.05, 1.1, 1.2, ошибки в сумме, неверные реквизиты, массовые расхождения.</div>
-          </div>
-          <div class="bg-blue-50 rounded-2xl p-5 border border-blue-100">
-            <div class="font-bold text-lg text-slate-900">Готовим документы</div>
-            <div class="mt-2 text-slate-600">Помогаем с обоснованием корректировки и внутренними материалами для проверки.</div>
-          </div>
-          <div class="bg-blue-50 rounded-2xl p-5 border border-blue-100">
-            <div class="font-bold text-lg text-slate-900">Работаем удалённо</div>
-            <div class="mt-2 text-slate-600">Не останавливаем ваш бизнес и берём на себя часть операционной нагрузки.</div>
-          </div>
-        </div>
-
-        <div class="mt-8 grid gap-4 md:grid-cols-2">
-          <div class="rounded-2xl border border-slate-200 p-5">
-            <div class="text-sm font-semibold uppercase tracking-wider text-slate-500">Кейс 1</div>
-            <div class="mt-2 font-bold text-slate-900">Месяц неверной ставки НДС</div>
-            <p class="mt-2 text-slate-600">Разобрали массовую ошибку, определили порядок исправлений и подготовили пакет документов для корректировки.</p>
-          </div>
-          <div class="rounded-2xl border border-slate-200 p-5">
-            <div class="text-sm font-semibold uppercase tracking-wider text-slate-500">Кейс 2</div>
-            <div class="mt-2 font-bold text-slate-900">Неоформленные возвраты</div>
-            <p class="mt-2 text-slate-600">Выстроили последовательность действий и помогли компании закрыть проблему без хаоса в кассе.</p>
-          </div>
-        </div>
       </div>
     </section>
 
     <!-- Quiz -->
-    <section id="quiz" class="max-w-4xl mx-auto px-4 py-8">
+    <section id="quiz" class="max-w-5xl mx-auto py-8 px-2 mb-12">
       <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
         <div class="flex items-start justify-between gap-4 flex-wrap">
           <div>
-            <h2 class="text-3xl font-extrabold text-slate-900">Пройдите тест</h2>
-
+            <h2 class="text-3xl font-extrabold text-slate-900">Пройти проверку</h2>
             <p class="mt-2 text-slate-600">15 вопросов помогут понять, есть ли у вашей компании признаки риска.</p>
           </div>
-
-          <div class="bg-white p-4">
-            <!-- <h2 class="text-2xl font-bold text-slate-900">Как тест работает</h2> -->
-            <!-- <ol class="mt-6 space-y-4 text-slate-700">
-              <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">1</span><span>Отвечаете на 15 простых вопросов.</span></li>
-              <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">2</span><span>Система оценивает ваши ответы.</span></li>
-              <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">3</span><span>Получаете предварительный риск-профиль.</span></li>
-              <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">4</span><span>При необходимости оставляете контакт для консультации.</span></li>
-            </ol> -->
-          </div>
-
-          <!-- <div class="text-sm font-semibold text-slate-500" id="progressText">Вопрос 1 из 15</div> -->
         </div>
 
-<div class="text-sm font-semibold text-slate-500" id="progressText">Вопрос 1 из 15</div>
+        <div class="text-sm font-semibold text-slate-500" id="progressText">Вопрос 1 из 15</div>
 
         <div class="mt-5 w-full bg-slate-200 rounded-full h-3 overflow-hidden">
-          
-          <div id="progressBar" class="h-3 bg-blue-600 rounded-full transition-all duration-300" style="width: 6.66%;"></div>
+          <div id="progressBar" class="h-3 bg-green-600 rounded-full transition-all duration-300" style="width: 6.66%;"></div>
         </div>
 
         <form id="quizForm" class="mt-8 space-y-8">
@@ -322,7 +220,7 @@
           </div>
 
           <div class="flex gap-4 pt-2">
-            <button type="button" id="prevBtn" class="px-6 py-3 rounded-xl bg-slate-200 font-semibold hover:bg-slate-300 transition">Назад</button>
+            <button type="button" id="prevBtn" class="px-6 py-3 rounded-xl bg-gray-200 font-semibold hover:bg-gray-300 transition">Назад</button>
             <button type="button" id="nextBtn" class="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">Далее</button>
           </div>
         </form>
@@ -330,7 +228,7 @@
     </section>
 
     <!-- Result -->
-    <section id="result" class="max-w-4xl mx-auto px-4 py-12 hidden">
+    <section id="result" class="max-w-5xl mx-auto px-4 py-12 hidden">
       <div id="riskBox" class="rounded-3xl p-8 border-l-8 bg-white shadow-lg border-slate-200">
         <h2 id="resultTitle" class="text-3xl font-extrabold text-slate-900">Ваш результат</h2>
         <p id="resultSubtitle" class="mt-2 text-slate-600"></p>
@@ -348,129 +246,105 @@
         </div>
       </div>
 
-      <div class="mt-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h3 class="text-2xl font-bold text-slate-900">Получить разбор ситуации</h3>
-        <p class="mt-2 text-slate-600">
-          Оставьте контакт, и мы предложим консультацию по вашей ситуации.
-        </p>
-
-        <form id="leadForm" class="mt-6 grid gap-4">
-          <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border border-slate-300" />
-          <input type="tel" name="phone" placeholder="Телефон" class="w-full px-4 py-3 rounded-xl border border-slate-300" />
-          <input type="text" name="company" placeholder="Организация" class="w-full px-4 py-3 rounded-xl border border-slate-300" />
-          <textarea name="comment" placeholder="Коротко опишите ситуацию" class="w-full px-4 py-3 rounded-xl border border-slate-300 min-h-32"></textarea>
-          <button type="submit" class="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
-            Получить консультацию
-          </button>
-          <p class="text-xs text-slate-500">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
-        </form>
-      </div>
-    </section>
+      <div class="mt-10  text-center" id="getConsultation"> 
+          <button class="open-modal-btn btn-primary inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium p-6 rounded-lg transition">
+              Получить консультацию
+          </button> 
+      </div> 
+    </section> 
   </main>
 
-  <script>
-    const totalSteps = 15;
-    let currentStep = 1;
+  <footer class="bg-gray-900 text-gray-300 py-10">
+      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 items-start">
+          <div>
+              <div class="text-2xl font-black text-white">Кассовый <span class="text-xl text-gray-500">Эксперт</span></div>
+              <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                  Удалённый сервис по Чекам коррекции и обучению Честному знаку.
+                  Для тех, кому нужен понятный и быстрый сервис по всей России.
+              </p>
+          </div>
+          <div>
+              <h3 class="text-white font-semibold mb-3">Разделы</h3>
+              <ul class="space-y-2 text-sm text-gray-400">
+                  <li><a href="index.html" class="hover:text-white">Домой</a></li>
+                  <li><a href="cheki-korrekcii.html" class="hover:text-white">Чеки коррекции</a></li>
+                  <li><a href="obuchenie-chestnyy-znak.html" class="hover:text-white">Обучение Честному ЗНАКу</a></li>
+              </ul>
+          </div>
+          <div>
+              <h3 class="text-white font-semibold mb-3">Контакты</h3>
+              <p class="text-sm text-gray-400">8 800 111-22-33</p>
+              <p class="text-sm text-gray-400 mt-2">info@kktexpert.ru</p>
+              <p class="text-xs text-gray-500 mt-4">© 2026 Кассовый Эксперт. Все права защищены.</p>
+          </div>
+      </div>
+  </footer>
 
-    const cards = Array.from(document.querySelectorAll('.question-card'));
-    const progressBar = document.getElementById('progressBar');
-    const progressText = document.getElementById('progressText');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const quizForm = document.getElementById('quizForm');
-    const quizSection = document.getElementById('quiz');
-    const resultSection = document.getElementById('result');
+  <div id="modalOverlay" class="opacity-0 pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900 bg-opacity-60 backdrop-filter backdrop-blur-sm transition-opacity duration-300 ease-out">
+        <div class="bg-white p-8 rounded-3xl max-w-md w-full shadow-2xl border border-gray-100 relative">
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
 
-    function showStep(step) {
-      cards.forEach(card => card.classList.add('hidden'));
-      const active = cards.find(card => Number(card.dataset.step) === step);
-      if (active) active.classList.remove('hidden');
+            <div id="modalContentWrapper">
+                <h3 class="text-2xl font-bold text-gray-900 tracking-tight">Заказать обратный звонок</h3>
+                <p class="text-gray-700 mt-2">Оставьте Ваши контактные данные для связи. Режим обратного звонка:
+                    <b>08:00 - 17:00 (Мск)</b>
+                </p>
+                
+                <form id="modalForm" class="mt-6 space-y-4">
+                    <input type="hidden" id="modalSourcePage" name="source_page" value="">
+                    <input type="hidden" id="modalSourceBtn" name="source_btn" value="">
 
-      progressBar.style.width = `${(step / totalSteps) * 100}%`;
-      progressText.textContent = `Вопрос ${step} из ${totalSteps}`;
-      prevBtn.style.visibility = step === 1 ? 'hidden' : 'visible';
-      nextBtn.textContent = step === totalSteps ? 'Показать результат' : 'Далее';
-    }
+                    <div>
+                        <label class="block text-base font-semibold text-gray-700 mb-2">Номер телефона <span class="text-red-700 text-xl">*</span></label>
+                        <input type="tel" id="phone" name="user_phone" placeholder="8 (000) 000-00-00"class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-base transition">
+                        <span id="phoneError" class="mt-1 hidden text-xs text-red-500 font-medium">Не корректный номер</span>
+                    </div>
 
-    function getStepValue(step) {
-      const selected = quizForm.querySelector(`input[name="q${step}"]:checked`);
-      return selected ? Number(selected.value) : null;
-    }
+                    <div>
+                        <label class="block text-base font-semibold text-gray-700 mb-2">Ваше имя</label>
+                        <input type="text" name="user_name" placeholder="Введите Ваше имя"  class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-base transition">
+                    </div>
 
-    function calculateScore() {
-      let score = 0;
-      for (let i = 1; i <= totalSteps; i++) {
-        const value = getStepValue(i);
-        if (value !== null) score += value;
-      }
-      return score;
-    }
+                    <div class="pt-1">
+                        <label class="flex items-center gap-3 cursor-pointer select-none">
+                            <input 
+                                type="checkbox" 
+                                id="policy" 
+                                name="user_policy"
+                                class="mt-1 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 transition cursor-pointer"
+                            >
+                            <span class="text-sm text-gray-600 leading-tight">
+                                Я согласен на <a href="#" class="text-indigo-600 hover:underline">обработку персональных данных</a> <span class="text-red-700 text-xl">*</span>
+                            </span>
+                        </label>
+                        <span id="policyError" class="mt-1 hidden text-xs text-red-500 font-medium">Необходимо ваше согласие для отправки формы.</span>
+                    </div>
 
-    function showResult(score) {
-      quizSection.classList.add('hidden');
-      resultSection.classList.remove('hidden');
+                    <div id="serverErrorBlock" class="mt-2 hidden text-sm bg-red-50 text-red-600 p-3 rounded-lg border border-red-200">
+                        Произошла ошибка при отправке. Попробуйте позже.
+                    </div>
 
-      const riskBox = document.getElementById('riskBox');
-      const resultTitle = document.getElementById('resultTitle');
-      const resultSubtitle = document.getElementById('resultSubtitle');
-      const riskText = document.getElementById('riskText');
-      const meaningText = document.getElementById('meaningText');
-      const recommendText = document.getElementById('recommendText');
+                    <button type="submit" id="submitModalBtn" class="relative w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-4 rounded-xl transition text-center text-base shadow-md mt-4 focus:outline-none flex items-center justify-center gap-2">
+                        <svg id="btnLoader" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span id="btnText">Отправить заявку</span>
+                    </button>
+                </form>
 
-      if (score <= 3) {
-        riskBox.className = 'rounded-3xl p-8 border-l-8 bg-white shadow-lg border-emerald-500';
-        resultTitle.textContent = 'Низкий риск';
-        resultSubtitle.textContent = 'По вашим ответам признаков системной проблемы немного.';
-        riskText.textContent = 'Вероятно, у вас есть базовый порядок, но отдельные операции стоит периодически перепроверять.';
-        meaningText.textContent = 'Сейчас у компании не видно явной картины системных ошибок, требующих срочного вмешательства.';
-        recommendText.textContent = 'Рекомендуем профилактическую проверку и короткую консультацию по спорным случаям.';
-      } else if (score <= 7) {
-        riskBox.className = 'rounded-3xl p-8 border-l-8 bg-white shadow-lg border-amber-500';
-        resultTitle.textContent = 'Средний риск';
-        resultSubtitle.textContent = 'В работе уже есть признаки, которые стоит перепроверить.';
-        riskText.textContent = 'Часть операций может потребовать анализа и уточнения порядка действий.';
-        meaningText.textContent = 'Есть признаки ошибок в кассовой дисциплине или проблемных ситуаций, которые лучше разобрать до проверки.';
-        recommendText.textContent = 'Рекомендуем экспресс-аудит, разбор операций и проверку необходимости чеков коррекции.';
-      } else {
-        riskBox.className = 'rounded-3xl p-8 border-l-8 bg-white shadow-lg border-red-500';
-        resultTitle.textContent = 'Высокий риск';
-        resultSubtitle.textContent = 'По вашим ответам видно, что компании нужен детальный разбор.';
-        riskText.textContent = 'Возможно, уже есть существенные признаки нарушений или ошибок по ККТ.';
-        meaningText.textContent = 'Ситуация требует анализа операций, документов и порядка исправления ошибок.';
-        recommendText.textContent = 'Рекомендуем срочную консультацию и подготовку плана корректирующих действий.';
-      }
+                <p class="text-base text-gray-700 mt-4 text-center">
+                    Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
+                </p>
+            </div>
+        </div>
+    </div>
 
-      resultSection.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    nextBtn.addEventListener('click', () => {
-      const value = getStepValue(currentStep);
-      if (value === null) {
-        alert('Пожалуйста, выберите ответ.');
-        return;
-      }
-
-      if (currentStep < totalSteps) {
-        currentStep++;
-        showStep(currentStep);
-      } else {
-        showResult(calculateScore());
-      }
-    });
-
-    prevBtn.addEventListener('click', () => {
-      if (currentStep > 1) {
-        currentStep--;
-        showStep(currentStep);
-      }
-    });
-
-    document.getElementById('leadForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Заявка отправлена. Здесь подключается отправка в CRM.');
-    });
-
-    showStep(currentStep);
-  </script>
+  <script src="assets/script.js"></script>
+  <script src="assets/script-modal.js"></script>
 </body>
 </html>

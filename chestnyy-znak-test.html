@@ -5,59 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Тест + калькулятор стоимости маркировки «Честный знак»</title>
   <meta name="description" content="Пройдите тест, узнайте, нужна ли маркировка, и сразу получите ориентировочную стоимость внедрения.»" />
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/script-menu.js"></script>
+  <script src="assets/imask.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="">
 
-  <!-- Header -->
-<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30 backdrop-filter backdrop-blur">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
-        <div class="text-center lg:text-left">
-            <a href="index.html">
-                <span class="text-2xl font-black tracking-tight text-blue-600">Кассовый</span>
-                <span class="text-2xl font-light text-gray-500">Эксперт</span>
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        
+        <div class="shrink-0">
+            <a href="index.html" class="group block">
+                <div class="flex items-baseline gap-1">
+                    <span class="text-xl font-black tracking-tight text-blue-600 transition group-hover:text-blue-700">Кассовый</span>
+                    <span class="text-xl text-gray-500">Эксперт</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-0.5 hidden lg:block">
+                    Удалённая помощь бизнесу по кассам,<br class="hidden lg:block"> маркировке и отчетности по всей России
+                </p>
             </a>
-            <p class="text-xs text-gray-500 mt-0.5">Удалённая помощь бизнесу по кассам, <br>маркировке и отчетности по всей России</p>
         </div>
-        <div class="hidden md:flex items-center gap-6 text-sm text-gray-500">
-            <a href="cheki-korrekcii.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
+        <nav class="hidden lg:flex items-center gap-8 text font-medium">
+            <a href="cheki-korrekcii.html" class="text-gray-600 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full transition-colors">
                 Чеки коррекции
             </a>
-
-            <a href="checki-korrekcii-test.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
-                Тест чеки коррекции 
-            </a>
-
-            <a href="obuchenie-chestnyy-znak.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+            <a href="obuchenie-chestnyy-znak.html" class="text-gray-600 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-600 after:transition-all hover:after:w-full transition-colors">
                 Обучение маркировке
             </a>
-
-            <a href="chestnyy-znak-test.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+            <a href="checki-korrekcii-test.html" class="text-gray-500 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full transition-colors">
+                Тест чеки
+            </a>
+            <a href="chestnyy-znak-test.html" class="text-gray-500 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-600 after:transition-all hover:after:w-full transition-colors">
                 Тест маркировки
             </a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline-block text-xl font-bold text-gray-700 hover:text-blue-600 transition-colors">
+                8 800 111-22-33
+            </span>
+            <button id="mobileMenuBtn" class="lg:hidden p-2 text-gray-600 hover:text-blue-600 focus:outline-none transition-colors" aria-label="Открыть меню">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path id="burgerIcon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
-        <div class="text-center lg:text-right">
-            <a href="tel:+78001112233" class="text-base font-bold text-gray-400 hover:text-blue-600 transition">8 800 111-22-33</a>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-gray-100 bg-white shadow-xl absolute top-full left-0 w-full animate-fade-in">
+        <div class="px-4 py-6 space-y-4 flex flex-col font-medium text-base text-center">
+            <a href="cheki-korrekcii.html" class="py-2 text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition">Чеки коррекции</a>
+            <a href="obuchenie-chestnyy-znak.html" class="py-2 text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition">Обучение маркировке</a>
+            <div class="h-px bg-gray-100 my-1"></div>
+            <a href="checki-korrekcii-test.html" class="py-2 text-gray-700 hover:text-green-600 rounded-lg hover:bg-green-50 transition">Тест чеки коррекции</a>
+            <a href="chestnyy-znak-test.html" class="py-2 text-gray-700 hover:text-green-600 rounded-lg hover:bg-green-50 transition">Тест маркировки</a>
+            <div class="h-px bg-gray-100 my-1"></div>
         </div>
     </div>
 </header>
 
   <main>
     <!-- Hero -->
-    <section class="max-w-7xl mx-auto px-4 py-16 grid lg:grid-cols-1 gap-10 items-center">
+    <section class="max-w-5xl mx-auto py-16 px-4 grid lg:grid-cols-1 gap-10 items-center">
       <div>
-        <div class="inline-flex items-center px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-sm">
-          Проверьте за 3 минуты: нужна маркировка и сколько это стоит
-        </div>
-
         <h1 class="mt-5 text-4xl md:text-5xl font-extrabold leading-tight">
-          Узнайте, нужна ли вашей компании маркировка, и сразу получите ориентировочную стоимость внедрения
+          Проверьте за минуту, нужна ли вашей компании маркировка
         </h1>
 
         <p class="mt-5 text-lg text-slate-600 max-w-2xl">
@@ -65,80 +77,30 @@
         </p>
 
         <ul class="mt-8 space-y-3 text-slate-700">
-          <li class="flex gap-3"><span class="text-emerald-600 font-bold">✓</span><span>Тест показывает вероятность обязательной маркировки.</span></li>
-          <li class="flex gap-3"><span class="text-emerald-600 font-bold">✓</span><span>Калькулятор оценивает стоимость внедрения именно для вашей ситуации.</span></li>
-          <li class="flex gap-3"><span class="text-emerald-600 font-bold">✓</span><span>Вы получаете план действий и предложение консультации.</span></li>
-        </ul>
-
-        <div class="mt-8 flex flex-wrap gap-4 justify-center">
-          <a href="#quiz" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition text-center">
-            Пройти тест и рассчитать стоимость
-          </a>
-        </div>
-
-        
-      </div>
-
-      <!-- <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8">
-        <h2 class="text-2xl font-bold text-slate-900">Как это работает</h2>
-        <ol class="mt-6 space-y-4 text-slate-700">
-          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">1</span><span>Отвечаете на 12 вопросов о деятельности и категориях товаров.</span></li>
-          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">2</span><span>Система оценивает риск обязательной маркировки.</span></li>
-          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">3</span><span>Рассчитываются ориентировочные затраты на внедрение.</span></li>
-          <li class="flex gap-3"><span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">4</span><span>Вы получаете результат и предложение консультации.</span></li>
-        </ol>
-      </div> -->
-    </section>
-
-    <!-- Risks -->
-    <section id="risks" class="max-w-7xl mx-auto px-4 py-12">
-      <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-pink-600">Почему отсутствие маркировки может быть рискованным</h2>
-        <p class="mt-4 text-lg text-slate-600">
-          Для ряда товаров обязательная маркировка установлена законом. Если товар попадает в обязательную маркировку и вы его продаёте без кодов, возможны штрафы, изъятие товара и другие последствия.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-6 md:grid-cols-3">
-        <div class="bg-white rounded-2xl border p-6 shadow-sm border-l-4 border-red-500">
-          <h3 class="text-xl font-bold text-slate-900">Штрафы и санкции</h3>
-          <p class="mt-3 text-slate-600">
-            Нарушение требований по маркировке может привести к штрафам и административным последствиям для организации и руководителей.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl border  p-6 shadow-sm border-l-4 border-red-500">
-          <h3 class="text-xl font-bold text-slate-900">Изъятие товара</h3>
-          <p class="mt-3 text-slate-600">
-            В ряде случаев товар может быть изъят из оборота, и продажа его без маркировки может стать основанием для блокировки деятельности.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl border p-6 shadow-sm border-l-4 border-red-500">
-          <h3 class="text-xl font-bold text-slate-900">Проблемы на маркетплейсах</h3>
-          <p class="mt-3 text-slate-600">
-            Многие маркетплейсы и крупные покупатели требуют обязательной маркировки. Без неё могут быть ограничения на продажи и поставку.
-          </p>
-        </div>
+          <li class="flex gap-3"><span class="text-green-600 font-bold">✓</span><span>Тест показывает вероятность обязательной маркировки.</span></li>
+          <li class="flex gap-3"><span class="text-green-600 font-bold">✓</span><span>Калькулятор оценивает стоимость внедрения именно для вашей ситуации.</span></li>
+          <li class="flex gap-3"><span class="text-green-600 font-bold">✓</span><span>Вы получаете план действий.</span></li>
+        </ul>        
       </div>
     </section>
 
     <!-- Quiz -->
-    <section id="quiz" class="max-w-4xl mx-auto px-4 py-8">
+    <section id="quizZnak" class="max-w-5xl mx-auto py-8 px-2 mb-12">
       <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
         <div class="flex items-start justify-between gap-4 flex-wrap">
           <div>
-            <h2 class="text-3xl font-extrabold text-slate-900">Пройдите тест</h2>
+            <h2 class="text-3xl font-extrabold text-slate-900">Пройти проверку</h2>
             <p class="mt-2 text-slate-600">12 вопросов помогут понять, нужна ли вашей компании обязательная маркировка.</p>
           </div>
-          <div class="text-sm font-semibold text-slate-500" id="progressText">Вопрос 1 из 12</div>
         </div>
+
+        <div class="text-sm font-semibold text-slate-500" id="progressTextZnak">Вопрос 1 из 12</div>
 
         <div class="mt-5 w-full bg-slate-200 rounded-full h-3 overflow-hidden">
-          <div id="progressBar" class="h-3 bg-emerald-600 rounded-full transition-all duration-300" style="width: 8.33%;"></div>
+          <div id="progressBarZnak" class="h-3 bg-green-600 rounded-full transition-all duration-300" style="width: 8.33%;"></div>
         </div>
 
-        <form id="quizForm" class="mt-8 space-y-8">
+        <form id="quizFormZnak" class="mt-8 space-y-8">
           <div class="question-card" data-step="1">
             <h3 class="text-xl font-bold text-slate-900">1. Вы производите или импортируете товары?</h3>
             <div class="mt-4 space-y-3">
@@ -189,7 +151,7 @@
           </div>
 
           <div class="question-card hidden" data-step="7">
-            <h3 class="text-xl font-bold text-slate-900">7. Вы работаюте с товарами из категорий: лёгкая промышленность,_, парфюмерия?</h3>
+            <h3 class="text-xl font-bold text-slate-900">7. Вы работаюте с товарами из категорий: лёгкая промышленность, парфюмерия?</h3>
             <div class="mt-4 space-y-3">
               <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q7" value="1" class="mt-1"> Да</label>
               <label class="flex gap-3 p-4 rounded-2xl border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="q7" value="0" class="mt-1"> Нет</label>
@@ -237,22 +199,42 @@
           </div>
 
           <div class="flex gap-4 pt-2">
-            <button type="button" id="prevBtn" class="px-6 py-3 rounded-xl bg-slate-200 font-semibold hover:bg-slate-300 transition">Назад</button>
-            <button type="button" id="nextBtn" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition">Далее</button>
+            <button type="button" id="prevBtnZnak" class="px-6 py-3 rounded-xl bg-gray-200 font-semibold hover:bg-gray-300 transition">Назад</button>
+            <button type="button" id="nextBtnZnak" class="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">Далее</button>
           </div>
         </form>
       </div>
     </section>
 
+    <!-- Result -->
+    <section id="resultZnak" class="max-w-5xl mx-auto py-12 px-2 hidden">
+      <div id="riskBoxZnak" class="p-8 border-l-8 bg-white shadow-lg border-slate-200">
+        <h2 id="resultTitleZnak" class="text-3xl font-extrabold text-slate-900">Ваш результат</h2>
+        <p id="resultSubtitleZnak" class="mt-2 text-slate-600"></p>
+        <p id="riskTextZnak" class="mt-5 text-lg font-semibold text-slate-900"></p>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h3 class="text-xl font-bold text-slate-900">Результат</h3>
+          <p id="meaningTextZnak" class="mt-3 text-slate-600"></p>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h3 class="text-xl font-bold text-slate-900">Рекомендация</h3>
+          <p id="recommendTextZnak" class="mt-3 text-slate-600"></p>
+        </div>
+      </div>
+    </section>
+
     <!-- Calculator -->
-    <section id="calculator" class="max-w-4xl mx-auto px-4 py-8 hidden">
+    <section id="calculatorZnak" class="max-w-5xl mx-auto py-8 px-2 mb-12 hidden">
       <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
         <h2 class="text-3xl font-extrabold text-slate-900">Ориентировочная стоимость внедрения маркировки</h2>
         <p class="mt-2 text-slate-600">
           Рассчитайте приблизительную стоимость внедрения маркировки в вашей ситуации.
         </p>
 
-        <form id="calcForm" class="mt-8 grid gap-6">
+        <form id="calcFormZnak" class="mt-8 grid gap-6">
           <div>
             <label class="text-lg font-semibold text-slate-900">1. Какой приблизительный объём товарных единиц в месяц?</label>
             <div class="mt-3 flex flex-wrap gap-3">
@@ -298,201 +280,114 @@
             </div>
           </div>
 
-          <div class="bg-emerald-50 rounded-2xl border border-emerald-100 p-6">
-            <div class="text-sm font-semibold uppercase tracking-wider text-emerald-700">Ориентировочная стоимость</div>
-            <div class="mt-2 text-4xl font-extrabold text-emerald-700" id="totalPrice">0 ₽</div>
-            <p class="mt-2 text-emerald-700">
+          <div class="bg-green-50 rounded-2xl border border-green-100 p-6">
+            <div class="text-sm font-semibold uppercase tracking-wider text-green-700">Ориентировочная стоимость</div>
+            <div class="mt-2 text-4xl font-extrabold text-green-700" id="totalPriceZnak">0 ₽</div>
+            <p class="mt-2 text-green-700">
               Это приблизительная оценка. Для точной сметы запишите на консультацию.
             </p>
           </div>
 
           <div class="flex gap-4">
-            <button type="button" id="calcBack" class="px-6 py-3 rounded-xl bg-slate-200 font-semibold hover:bg-slate-300 transition">Вернуться к тесту</button>
-            <a href="#lead" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition">Записаться на консультацию</a>
+            <button type="button" id="calcBackZnak" class="px-6 py-3 rounded-xl bg-gray-200 font-semibold hover:bg-gray-300 transition">Вернуться к тесту</button>
+            <button type="button" class="open-modal-btn px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition">Получить консультацию</button>
           </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- Result -->
-    <section id="result" class="max-w-4xl mx-auto px-4 py-12 hidden">
-      <div id="riskBox" class="rounded-3xl p-8 border-l-8 bg-white shadow-lg border-slate-200">
-        <h2 id="resultTitle" class="text-3xl font-extrabold text-slate-900">Ваш результат</h2>
-        <p id="resultSubtitle" class="mt-2 text-slate-600"></p>
-        <p id="riskText" class="mt-5 text-lg font-semibold text-slate-900"></p>
-      </div>
-
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 class="text-xl font-bold text-slate-900">Результат</h3>
-          <p id="meaningText" class="mt-3 text-slate-600"></p>
-        </div>
-        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 class="text-xl font-bold text-slate-900">Рекомендация</h3>
-          <p id="recommendText" class="mt-3 text-slate-600"></p>
-        </div>
-      </div>
-
-      <div class="mt-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h3 class="text-2xl font-bold text-slate-900">Получить детальную смету и консультацию</h3>
-        <p class="mt-2 text-slate-600">
-          Оставьте контакт, и мы предложим детальную смету и консультацию по маркировке в вашей ситуации.
-        </p>
-
-        <form id="leadForm" class="mt-6 grid gap-4">
-          <input type="text" name="name" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border border-slate-300" />
-          <input type="tel" name="phone" placeholder="Телефон" class="w-full px-4 py-3 rounded-xl border border-slate-300" />
-          <input type="text" name="company" placeholder="Организация" class="w-full px-4 py-3 rounded-xl border border-slate-300" />
-          <textarea name="comment" placeholder="Коротко опишите вашу ситуацию" class="w-full px-4 py-3 rounded-xl border border-slate-300 min-h-32"></textarea>
-          <button type="submit" class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition">
-            Получить консультацию
-          </button>
-          <p class="text-xs text-slate-500">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
         </form>
       </div>
     </section>
   </main>
 
-  <script>
-    const totalSteps = 12;
-    let currentStep = 1;
+  <footer class="bg-gray-900 text-gray-300 py-10">
+      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 items-start">
+          <div>
+              <div class="text-2xl font-black text-white">Кассовый <span class="text-xl text-gray-500">Эксперт</span></div>
+              <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                  Удалённый сервис по Чекам коррекции и обучению Честному знаку.
+                  Для тех, кому нужен понятный и быстрый сервис по всей России.
+              </p>
+          </div>
+          <div>
+              <h3 class="text-white font-semibold mb-3">Разделы</h3>
+              <ul class="space-y-2 text-sm text-gray-400">
+                  <li><a href="index.html" class="hover:text-white">Домой</a></li>
+                  <li><a href="cheki-korrekcii.html" class="hover:text-white">Чеки коррекции</a></li>
+                  <li><a href="obuchenie-chestnyy-znak.html" class="hover:text-white">Обучение Честному ЗНАКу</a></li>
+              </ul>
+          </div>
+          <div>
+              <h3 class="text-white font-semibold mb-3">Контакты</h3>
+              <p class="text-sm text-gray-400">8 800 111-22-33</p>
+              <p class="text-sm text-gray-400 mt-2">info@kktexpert.ru</p>
+              <p class="text-xs text-gray-500 mt-4">© 2026 Кассовый Эксперт. Все права защищены.</p>
+          </div>
+      </div>
+  </footer>
 
-    const cards = Array.from(document.querySelectorAll('.question-card'));
-    const progressBar = document.getElementById('progressBar');
-    const progressText = document.getElementById('progressText');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const quizForm = document.getElementById('quizForm');
-    const quizSection = document.getElementById('quiz');
-    const resultSection = document.getElementById('result');
-    const calculatorSection = document.getElementById('calculator');
-    const calcForm = document.getElementById('calcForm');
-    const calcBack = document.getElementById('calcBack');
-    const leadSection = document.getElementById('lead');
+  <div id="modalOverlay" class="opacity-0 pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900 bg-opacity-60 backdrop-filter backdrop-blur-sm transition-opacity duration-300 ease-out">
+        <div class="bg-white p-8 rounded-3xl max-w-md w-full shadow-2xl border border-gray-100 relative">
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
 
-    function showStep(step) {
-      cards.forEach(card => card.classList.add('hidden'));
-      const active = cards.find(card => Number(card.dataset.step) === step);
-      if (active) active.classList.remove('hidden');
+            <div id="modalContentWrapper">
+                <h3 class="text-2xl font-bold text-gray-900 tracking-tight">Заказать обратный звонок</h3>
+                <p class="text-gray-700 mt-2">Оставьте Ваши контактные данные для связи. Режим обратного звонка:
+                    <b>08:00 - 17:00 (Мск)</b>
+                </p>
+                
+                <form id="modalForm" class="mt-6 space-y-4">
+                    <input type="hidden" id="modalSourcePage" name="source_page" value="">
+                    <input type="hidden" id="modalSourceBtn" name="source_btn" value="">
 
-      progressBar.style.width = `${(step / totalSteps) * 100}%`;
-      progressText.textContent = `Вопрос ${step} из ${totalSteps}`;
-      prevBtn.style.visibility = step === 1 ? 'hidden' : 'visible';
-      nextBtn.textContent = step === totalSteps ? 'Показать результат и стоимость' : 'Далее';
-    }
+                    <div>
+                        <label class="block text-base font-semibold text-gray-700 mb-2">Номер телефона <span class="text-red-700 text-xl">*</span></label>
+                        <input type="tel" id="phone" name="user_phone" placeholder="8 (000) 000-00-00"class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-base transition">
+                        <span id="phoneError" class="mt-1 hidden text-xs text-red-500 font-medium">Не корректный номер</span>
+                    </div>
 
-    function getStepValue(step) {
-      const selected = quizForm.querySelector(`input[name="q${step}"]:checked`);
-      return selected ? Number(selected.value) : null;
-    }
+                    <div>
+                        <label class="block text-base font-semibold text-gray-700 mb-2">Ваше имя</label>
+                        <input type="text" name="user_name" placeholder="Введите Ваше имя"  class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-base transition">
+                    </div>
 
-    function calculateScore() {
-      let score = 0;
-      for (let i = 1; i <= totalSteps; i++) {
-        const value = getStepValue(i);
-        if (value !== null) score += value;
-      }
-      return score;
-    }
+                    <div class="pt-1">
+                        <label class="flex items-center gap-3 cursor-pointer select-none">
+                            <input 
+                                type="checkbox" 
+                                id="policy" 
+                                name="user_policy"
+                                class="mt-1 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 transition cursor-pointer"
+                            >
+                            <span class="text-sm text-gray-600 leading-tight">
+                                Я согласен на <a href="#" class="text-indigo-600 hover:underline">обработку персональных данных</a> <span class="text-red-700 text-xl">*</span>
+                            </span>
+                        </label>
+                        <span id="policyError" class="mt-1 hidden text-xs text-red-500 font-medium">Необходимо ваше согласие для отправки формы.</span>
+                    </div>
 
-    function showResult(score) {
-      quizSection.classList.add('hidden');
+                    <div id="serverErrorBlock" class="mt-2 hidden text-sm bg-red-50 text-red-600 p-3 rounded-lg border border-red-200">
+                        Произошла ошибка при отправке. Попробуйте позже.
+                    </div>
 
-      const riskBox = document.getElementById('riskBox');
-      const resultTitle = document.getElementById('resultTitle');
-      const resultSubtitle = document.getElementById('resultSubtitle');
-      const riskText = document.getElementById('riskText');
-      const meaningText = document.getElementById('meaningText');
-      const recommendText = document.getElementById('recommendText');
+                    <button type="submit" id="submitModalBtn" class="relative w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-4 rounded-xl transition text-center text-base shadow-md mt-4 focus:outline-none flex items-center justify-center gap-2">
+                        <svg id="btnLoader" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span id="btnText">Отправить заявку</span>
+                    </button>
+                </form>
 
-      if (score <= 4) {
-        riskBox.className = 'rounded-3xl p-8 border-l-8 bg-white shadow-lg border-emerald-500';
-        resultTitle.textContent = 'Вероятность обязательной маркировки низкая';
-        resultSubtitle.textContent = 'По вашим ответам не видно явных признаков, что вы обязаны маркировать товары.';
-        riskText.textContent = 'Возможно, ваша деятельность не попадает в обязательные категории или вы не производите/импортируете товары.';
-        meaningText.textContent = 'Вероятно, маркировка не обязательна в вашей ситуации, но стоит периодически проверять, не изменились ли требования.';
-        recommendText.textContent = 'Рекомендуем короткую консультацию, чтобы убедиться, что вы правильно классифицировали свою деятельность.';
-      } else if (score <= 8) {
-        riskBox.className = 'rounded-3xl p-8 border-l-8 bg-white shadow-lg border-amber-500';
-        resultTitle.textContent = 'Вероятность обязательной маркировки средняя';
-        resultSubtitle.textContent = 'По вашим ответам есть признаки, что вы можете попадать в обязательную маркировку.';
-        riskText.textContent = 'Возможно, часть товаров уже должна быть маркирована, а вы этого не реализовали.';
-        meaningText.textContent = 'Стоит провести детальный разбор вашей деятельности и категорий товаров, чтобы понять степень риска.';
-        recommendText.textContent = 'Рекомендуем консультацию по категориям маркировки и первому шагу в системе «Честный знак».';
-      } else {
-        riskBox.className = 'rounded-3xl p-8 border-l-8 bg-white shadow-lg border-red-500';
-        resultTitle.textContent = 'Вероятность обязательной маркировки высокая';
-        resultSubtitle.textContent = 'По вашим ответам видно, что вы, скорее всего, обязаны маркировать товары.';
-        riskText.textContent = 'Ситуация может требовать работы с документами, процессами и интеграциями в систему маркировки.';
-        meaningText.textContent = 'Ваша деятельность, скорее всего, попадает в обязательную маркировку, и отсутствие маркировки может создать риски.';
-        recommendText.textContent = 'Рекомендуем срочную консультацию и планирование процессов маркировки, чтобы избежать штрафов и проблем.';
-      }
+                <p class="text-base text-gray-700 mt-4 text-center">
+                    Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
+                </p>
+            </div>
+        </div>
+    </div>
 
-      resultSection.classList.remove('hidden');
-      calculatorSection.classList.remove('hidden');
-      resultSection.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    nextBtn.addEventListener('click', () => {
-      const value = getStepValue(currentStep);
-      if (value === null) {
-        alert('Пожалуйста, выберите ответ.');
-        return;
-      }
-
-      if (currentStep < totalSteps) {
-        currentStep++;
-        showStep(currentStep);
-      } else {
-        showResult(calculateScore());
-        calcCalculator();
-      }
-    });
-
-    prevBtn.addEventListener('click', () => {
-      if (currentStep > 1) {
-        currentStep--;
-        showStep(currentStep);
-      }
-    });
-
-    calcBack.addEventListener('click', () => {
-      calculatorSection.classList.add('hidden');
-      quizSection.classList.remove('hidden');
-    });
-
-    function calcCalculator() {
-      const volume = calcForm.querySelector('input[name="volume"]:checked');
-      const activity = calcForm.querySelector('input[name="activity"]:checked');
-      const channels = calcForm.querySelector('input[name="channels"]:checked');
-      const int = calcForm.querySelector('input[name="int"]:checked');
-      const train = calcForm.querySelector('input[name="train"]:checked');
-      const totalPriceEl = document.getElementById('totalPrice');
-
-      if (!volume || !activity || !channels || !int || !train) {
-        totalPriceEl.textContent = '0 ₽';
-        return;
-      }
-
-      const base = 30000;
-      const volMult = Number(volume.value);
-      const actMult = Number(activity.value);
-      const chanMult = Number(channels.value);
-      const intCost = Number(int.value) ? 35000 : 0;
-      const trainCost = Number(train.value) ? 10000 : 0;
-
-      const total = (base * volMult * actMult * chanMult) + intCost + trainCost;
-      totalPriceEl.textContent = `${Math.round(total)} ₽`;
-    }
-
-    calcForm.addEventListener('change', calcCalculator);
-
-    document.getElementById('leadForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Заявка отправлена. Здесь подключается отправка в CRM.');
-    });
-
-    showStep(currentStep);
-  </script>
+  <script src="assets/script -znak.js"></script>
+  <script src="assets/script-modal.js"></script>
 </body>
 </html>

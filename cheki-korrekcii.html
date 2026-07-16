@@ -7,416 +7,557 @@
     <meta name="description" content="Удаленно исправим ошибки чеков, чеки коррекции по ФФД 1.2, поможем снизить риск штрафов ФНС и проблем с Честным ЗНАКом. Подключаемся по всей России.">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/imask.js" defer></script>
+    <script src="assets/script-menu.js"></script>
 </head>
 
 <body class="bg-slate-50 text-slate-900 font-sans">
-<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30 backdrop-filter backdrop-blur">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
-        <div class="text-center lg:text-left">
-            <a href="index.html">
-                <span class="text-2xl font-black tracking-tight text-blue-600">Кассовый</span>
-                <span class="text-2xl font-light text-gray-500">Эксперт</span>
+
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        
+        <div class="shrink-0">
+            <a href="index.html" class="group block">
+                <div class="flex items-baseline gap-1">
+                    <span class="text-xl font-black tracking-tight text-blue-600 transition group-hover:text-blue-700">Кассовый</span>
+                    <span class="text-xl text-gray-500">Эксперт</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-0.5 hidden lg:block">
+                    Удалённая помощь бизнесу по кассам,<br class="hidden lg:block"> маркировке и отчетности по всей России
+                </p>
             </a>
-            <p class="text-xs text-gray-500 mt-0.5">Удалённая помощь бизнесу по кассам, <br>маркировке и отчетности по всей России</p>
         </div>
-        <div class="hidden md:flex items-center gap-6 text-sm text-gray-500">
-            <a href="cheki-korrekcii.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
+        <nav class="hidden lg:flex items-center gap-8 text font-medium">
+            <a href="cheki-korrekcii.html" class="text-gray-600 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full transition-colors">
                 Чеки коррекции
             </a>
-
-            <a href="checki-korrekcii-test.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
-                Тест чеки коррекции 
-            </a>
-
-            <a href="obuchenie-chestnyy-znak.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+            <a href="obuchenie-chestnyy-znak.html" class="text-gray-600 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-600 after:transition-all hover:after:w-full transition-colors">
                 Обучение маркировке
             </a>
-
-            <a href="chestnyy-znak-test.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+            <a href="checki-korrekcii-test.html" class="text-gray-500 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full transition-colors">
+                Тест чеки
+            </a>
+            <a href="chestnyy-znak-test.html" class="text-gray-500 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-600 after:transition-all hover:after:w-full transition-colors">
                 Тест маркировки
             </a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline-block text-xl font-bold text-gray-700 hover:text-blue-600 transition-colors">
+                8 800 111-22-33
+            </span>
+            <button id="mobileMenuBtn" class="lg:hidden p-2 text-gray-600 hover:text-blue-600 focus:outline-none transition-colors" aria-label="Открыть меню">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path id="burgerIcon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
-        <div class="text-center lg:text-right">
-            <a href="tel:+78001112233" class="text-base font-bold text-gray-400 hover:text-blue-600 transition">8 800 111-22-33</a>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-gray-100 bg-white shadow-xl absolute top-full left-0 w-full animate-fade-in">
+        <div class="px-4 py-6 space-y-4 flex flex-col font-medium text-base text-center">
+            <a href="cheki-korrekcii.html" class="py-2 text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition">Чеки коррекции</a>
+            <a href="obuchenie-chestnyy-znak.html" class="py-2 text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition">Обучение маркировке</a>
+            <div class="h-px bg-gray-100 my-1"></div>
+            <a href="checki-korrekcii-test.html" class="py-2 text-gray-700 hover:text-green-600 rounded-lg hover:bg-green-50 transition">Тест чеки коррекции</a>
+            <a href="chestnyy-znak-test.html" class="py-2 text-gray-700 hover:text-green-600 rounded-lg hover:bg-green-50 transition">Тест маркировки</a>
+            <div class="h-px bg-gray-100 my-1"></div>
         </div>
     </div>
 </header>
 
-<div class="main-check">
+<div class="main-check bg-gradient-to-br from-white via-blue-50 to-gray-100">
     <div class="slide-shell">
         <div class="max-w-6xl mx-auto px-4 slide-grid">
             <div class="slide-copy">
-                <span class="hero-badge" style="background:#fff1f2;color:#be123c;">Чеки коррекции · 54-ФЗ · ФФД 1.2</span>
-                <h1 class="hero-title">Чеки коррекции</h1>
-                <p class="hero-desc">
-                    Исправляем чеки любой сложности без остановки ваших продаж. Формируем легитимные фискальные документы, которые гарантированно примет налоговая. Предоставляем полную юридическую поддержку на каждом этапе коррекции.
-                </p>
-                <div class="hero-actions">
-                    <a href="#lead-form" class="btn-primary">Исправить ошибку в чеке</a>
+                <div class="wrap-hero-img flex justify-center">
+                    <img class="hero-top-img" src="assets/img/check.webp" alt="">
                 </div>
+                <h1 class="hero-title">Чеки коррекции </h1>
+                <div class="hero-desc space-y-2"> 
+                    <span class="block">
+                        <span class="inline-block">
+                            <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 16">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                        <span class="text-gray-800 font-medium">Не сходится выручка по безналичному или наличному расчёту?</span> 
+                        <span class="ml-2 px-2 py-0.5 bg-green-50 text-green-700 rounded font-semibold text-base inline-block align-middle border border-green-200">Исправим</span>
+                    </span>
+                    <span class="block">
+                        <span class="inline-block">
+                            <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 16">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                        <span class="text-gray-800 font-medium">Пришло письмо из налоговой?</span> 
+                        <span class="ml-2 px-2 py-0.5 bg-green-50 text-green-700 rounded font-semibold text-base inline-block align-middle border border-green-200">Поможем</span>
+                    </span>
+                    <span class="block">
+                        <span class="inline-block">
+                            <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 16">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                        <span class="text-gray-800 font-medium">Обнаружилась ошибка в тысячах чеков?</span> 
+                        <span class="ml-2 px-2 py-0.5 bg-green-50 text-green-700 rounded font-semibold text-base inline-block align-middle border border-green-200">Решим</span>
+                    </span> 
+                    <span class="block">
+                        <span class="inline-block">
+                            <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 16">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                        <span class="text-gray-800 font-medium"> Хотите избежать штрафа за старую ошибку?</span> 
+                        <span class="ml-2 px-2 py-0.5 bg-green-50 text-green-700 rounded font-semibold text-base inline-block align-middle border border-green-200">Защитим</span>
+                    </span>
+                    <p class="py-4 text-xl">
+                        Исправляем чеки любой сложности без остановки ваших продаж
+                    </p>
+                </div>
+                <div class="mt-12 text-center"> 
+                    <button data-page="checki-korrekcii" data-btn-id="hero-banner-btn" class="open-modal-btn cheki-btn inline-block border border-gray-400 text-gray-900 font-medium px-6 py-3 rounded-lg transition">
+                        Оставить заявку
+                    </button>
+                </div> 
             </div>
             <div class="hero-visual">
-                <div class="wrap-img">
-                    <img src="img/check-correction3.jpg" alt="Чеки коррекции">
+                <div class="wrap-img flex justify-center">
+                    <img class="hero-visual-img rounded-2xl shadow-2xl" src="assets/img/check_1.webp" alt="Чеки коррекции">
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<main class="py-8 md:py-12">
+<container class="py-8">
     <div class="max-w-6xl mx-auto px-4">
-
-        <!-- Какие ошибки исправляем -->
         <section id="problems" class="py-12 md:py-16">
             <div class="max-w-4xl">
-                <span class="section-kicker">Кассовые ошибки</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-4">Какие ошибки в чеках мы исправляем</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight check-problems-title">
+                    Какие ошибки в чеках мы исправляем
+                </h2>
                 <p class="text-lg text-slate-700 mt-5 leading-relaxed">ФНС автоматически сверяет выписки банков с отчётами ОФД. Любое расхождение — повод для камеральной проверки и штрафа до 150 000 рублей для ООО. Мы находим и исправляем ошибку до того, как её найдёт налоговая.</p>
             </div>
+
             <div class="grid md:grid-cols-3 gap-6 mt-10">
                 <div class="problem-card flex flex-col h-full">
-                    <div class="problem-icon" style="background:#fff1f2;color:#e11d48;">💳</div>
-                    <h3 class="text-xl font-bold">Перепутан нал/безнал или СНО</h3>
-                    <p class="text-slate-600 mt-3 leading-relaxed flex-1">Кассир пробил оплату как наличные, а клиент рассчитался картой. Или в чеке указан неверный налоговый режим. Исправим системные и разовые ошибки, чтобы отчётность сошлась с фактом.</p>
+                    <div class="problem-icon" style="background:#fff1f2;color:#e11d48;">
+                        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="5" width="20" height="14" rx="2" />
+                            <line x1="2" y1="10" x2="22" y2="10" />
+                            <path stroke-linecap="round" d="M6 15h2m4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4">Перепутан нал/безнал или СНО</h3>
+                    <p class="text-slate-600 mt-3 leading-relaxed flex-1">
+                        Кассир пробил оплату как наличные, а клиент рассчитался картой. 
+                        Или в чеке указан неверный налоговый режим.
+                    </p>
+                    <div class="mt-4 p-3 bg-green-50 bg-opacity-70 border border-green-100 rounded-xl">
+                        <p class="text-green-700 text-base font-normal leading-relaxed">
+                            <span class="inline-block mr-1">✓</span> 
+                            Исправим системные и разовые ошибки, чтобы отчётность сошлась с фактом.
+                        </p>
+                    </div>
                 </div>
+        
                 <div class="problem-card flex flex-col h-full">
-                    <div class="problem-icon" style="background:#fff7ed;color:#ea580c;">🧾</div>
-                    <h3 class="text-xl font-bold">Забыли пробить чек</h3>
-                    <p class="text-slate-600 mt-3 leading-relaxed flex-1">Пришла оплата на расчётный счёт, а чек не сформирован. Поможем легализовать приход через чек коррекции до того, как расхождение заметит ФНС.</p>
+                    <div class="problem-icon" style="background:#fff1f2;color:#e11d48;">
+                        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4">Забыли пробить чек</h3>
+                    <p class="text-slate-600 mt-3 leading-relaxed flex-1">
+                        Пришла оплата на расчётный счёт, а чек не сформирован.
+                    </p>
+                    <div class="mt-4 p-3 bg-green-50 bg-opacity-70 border border-green-100 rounded-xl">
+                        <p class="text-green-700 text-base font-normal leading-relaxed">
+                            <span class="inline-block mr-1">✓</span> 
+                            Поможем легализовать приход через чек коррекции до того, как расхождение заметит ФНС.
+                        </p>
+                    </div>
                 </div>
+        
                 <div class="problem-card flex flex-col h-full">
-                    <div class="problem-icon" style="background:#eff6ff;color:#2563eb;">🏷️</div>
-                    <h3 class="text-xl font-bold">Ошибки тегов маркировки</h3>
-                    <p class="text-slate-600 mt-3 leading-relaxed flex-1">Не считался тег 1162, неверный код маркировки, сбой разрешительного режима. Чек коррекции с правильными тегами — и товар снова в легальном обороте.</p>
+                    <div class="problem-icon" style="background:#fff1f2;color:#e11d48;">
+                        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 17h.01M17 7h.01M17 17h.01M3 8v8a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2zM12 9v6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4">Ошибки тегов маркировки</h3>
+                    <p class="text-slate-600 mt-3 leading-relaxed flex-1">
+                        Продали маркированный товар без передачи кода в чек, указали неверный код или произошел сбой разрешительного режима.
+                    </p>
+                    <div class="mt-4 p-3 bg-green-50 bg-opacity-70 border border-green-100 rounded-xl">
+                        <p class="text-green-700 text-base font-normal leading-relaxed">
+                            <span class="inline-block mr-1">✓</span> 
+                            Чек коррекции с правильными тегами — и товар снова в легальном обороте.
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Как мы работаем -->
-        <section class="py-12 md:py-16 bg-slate-100 -mx-4 px-4">
-            <div class="max-w-4xl mx-auto">
-                <span class="section-kicker">Порядок работы</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-4">Как мы формируем чек коррекции</h2>
-                <p class="text-lg text-slate-700 mt-5 leading-relaxed">Никакой магии — прозрачный процесс из четырёх шагов. Вы знаете, что происходит на каждом этапе.</p>
-            </div>
-            <div class="max-w-4xl mx-auto mt-10 space-y-6">
-                <div class="flex items-start gap-5">
-                    <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg flex-shrink-0">1</div>
-                    <div>
-                        <h3 class="text-xl font-bold">Вы описываете проблему</h3>
-                        <p class="text-slate-600 mt-2 leading-relaxed">Присылаете отчёт о закрытии смены, скриншот из ОФД или просто рассказываете, что случилось: перепутали оплату, неверный СНО, забытый чек.</p>
+                <div class="problem-card flex flex-col h-full">
+                    <div class="problem-icon" style="background:#fff1f2;color:#e11d48;">
+                        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4">Неправильная ставка НДС</h3>
+                    <p class="text-slate-600 mt-3 leading-relaxed flex-1">
+                        Касса печатает устаревшие 20% вместо новых 22% или путает ставки на разные группы товаров.
+                    </p>
+                    <div class="mt-4 p-3 bg-green-50 bg-opacity-70 border border-green-100 rounded-xl">
+                        <p class="text-green-700 text-base font-normal leading-relaxed">
+                            <span class="inline-block mr-1">✓</span> 
+                            Сформируем корректные чеки исправления, чтобы исключить доначисления налога и пени.
+                        </p>
                     </div>
                 </div>
-                <div class="flex items-start gap-5">
-                    <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg flex-shrink-0">2</div>
-                    <div>
-                        <h3 class="text-xl font-bold">Мы анализируем и подключаемся</h3>
-                        <p class="text-slate-600 mt-2 leading-relaxed">За 5 минут подключаемся удалённо через AnyDesk. Смотрим вашу кассу, ОФД, журнал операций. Определяем, какой именно чек коррекции нужен и по какому основанию.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-5">
-                    <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg flex-shrink-0">3</div>
-                    <div>
-                        <h3 class="text-xl font-bold">Формируем чек коррекции</h3>
-                        <p class="text-slate-600 mt-2 leading-relaxed">Прямо в вашем кассовом ПО или личном кабинете ОФД создаём чек с верными реквизитами: признак способа расчёта, СНО, теги маркировки, сумма коррекции.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-5">
-                    <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg flex-shrink-0">4</div>
-                    <div>
-                        <h3 class="text-xl font-bold">Отдаём документы и закрываем вопрос</h3>
-                        <p class="text-slate-600 mt-2 leading-relaxed">Вы получаете подтверждение регистрации чека в ОФД, акт и шаблон объяснительной для ФНС. Всё готово для предъявления при проверке.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="py-12 md:py-16">
-            <div class="max-w-4xl">
-                <span class="section-kicker">Виды чеков коррекции</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-4">Какие чеки коррекции мы формируем</h2>
-                <p class="text-lg text-slate-700 mt-5 leading-relaxed">Не каждый чек коррекции одинаков. Мы определим, какой нужен именно в вашей ситуации.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6 mt-10">
-                <div class="friendly-card p-6">
-                    <div class="problem-icon mb-4" style="background:#eff6ff;color:#2563eb;">📄</div>
-                    <h3 class="text-xl font-bold">Коррекция расчётов (нал/безнал, сумма)</h3>
-                    <p class="text-slate-600 mt-3 leading-relaxed">Когда кассир ошибся в сумме или способе оплаты. Исправляем расхождение между реальной оплатой и данными в ОФД.</p>
-                </div>
-                <div class="friendly-card p-6">
-                    <div class="problem-icon mb-4" style="background:#ecfdf5;color:#16a34a;">📄</div>
-                    <h3 class="text-xl font-bold">Коррекция СНО и налоговой ставки</h3>
-                    <p class="text-slate-600 mt-3 leading-relaxed">Когда в чеке указан не тот налоговый режим. Критично для ИП на патенте и организаций с совмещёнными режимами.</p>
-                </div>
-                <div class="friendly-card p-6">
-                    <div class="problem-icon mb-4" style="background:#fff7ed;color:#ea580c;">📄</div>
-                    <h3 class="text-xl font-bold">Коррекция тегов маркировки (1162, 1163)</h3>
-                    <p class="text-slate-600 mt-3 leading-relaxed">Когда код маркировки не попал в чек или был передан с ошибкой. Критично для табака, обуви, пива, молочки и других маркируемых групп.</p>
-                </div>
-                <div class="friendly-card p-6">
-                    <div class="problem-icon mb-4" style="background:#fff1f2;color:#e11d48;">📄</div>
-                    <h3 class="text-xl font-bold">Коррекция незарегистрированной выручки</h3>
-                    <p class="text-slate-600 mt-3 leading-relaxed">Когда оплата прошла мимо кассы. Формируем чек коррекции на сумму поступления с полным пакетом документов для ФНС.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-12 md:py-16 bg-slate-100 -mx-4 px-4">
-            <div class="max-w-4xl mx-auto text-center mb-10">
-                <span class="section-kicker">Почему нам доверяют</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-4">Работаем быстро, чисто и под ключ</h2>
-            </div>
-            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-                <div class="friendly-card p-6 flex items-start gap-4">
-                    <div class="problem-icon flex-shrink-0" style="background:#ecfdf5;color:#16a34a;">✓</div>
-                    <div>
-                        <h3 class="font-bold text-lg">100% удалённо по всей России</h3>
-                        <p class="text-slate-600 mt-2 text-sm leading-relaxed">Подключаемся через AnyDesk за 5 минут. Вам не нужно ехать в офис или ждать инженера — всё решается онлайн.</p>
+                <div class="problem-card flex flex-col h-full">
+                    <div class="problem-icon" style="background:#fff1f2;color:#e11d48;">
+                        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4">Путаница с авансами</h3>
+                    <p class="text-slate-600 mt-3 leading-relaxed flex-1">
+                        Кассир дважды пробил «Аванс» вместо «Полного расчета» или закрыл сделку обычным чеком без зачета предоплаты.
+                    </p>
+                    <div class="mt-4 p-3 bg-green-50 bg-opacity-70 border border-green-100 rounded-xl">
+                        <p class="text-green-700 text-base font-normal leading-relaxed">
+                            <span class="inline-block mr-1">✓</span> Распутаем цепочку фискальных документов и выровняем кассовый баланс.
+                        </p>
                     </div>
                 </div>
-                <div class="friendly-card p-6 flex items-start gap-4">
-                    <div class="problem-icon flex-shrink-0" style="background:#ecfdf5;color:#16a34a;">✓</div>
-                    <div>
-                        <h3 class="font-bold text-lg">Полный пакет документов</h3>
-                        <p class="text-slate-600 mt-2 text-sm leading-relaxed">Официальный договор, акт выполненных работ, шаблон объяснительной для ФНС. Бухгалтерия будет спокойна.</p>
+    
+                <div class="problem-card flex flex-col h-full">
+                    <div class="problem-icon" style="background:#fff1f2;color:#e11d48;">
+                        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
                     </div>
-                </div>
-                <div class="friendly-card p-6 flex items-start gap-4">
-                    <div class="problem-icon flex-shrink-0" style="background:#ecfdf5;color:#16a34a;">✓</div>
-                    <div>
-                        <h3 class="font-bold text-lg">Без остановки продаж</h3>
-                        <p class="text-slate-600 mt-2 text-sm leading-relaxed">Формируем чек коррекции, не блокируя кассу. Вы продолжаете работать, пока мы исправляем ошибку.</p>
-                    </div>
-                </div>
-                <div class="friendly-card p-6 flex items-start gap-4">
-                    <div class="problem-icon flex-shrink-0" style="background:#ecfdf5;color:#16a34a;">✓</div>
-                    <div>
-                        <h3 class="font-bold text-lg">Конфиденциальность и гарантия</h3>
-                        <p class="text-slate-600 mt-2 text-sm leading-relaxed">Не передаём данные третьим лицам. Даём гарантию, что чек коррекции будет принят ОФД и ФНС.</p>
+                    <h3 class="text-xl font-bold mt-4">Отсутствие номенклатуры</h3>
+                    <p class="text-slate-600 mt-3 leading-relaxed flex-1">
+                        Вместо конкретного наименования позиций напечатано размытое «Товар» или «Услуга» по свободной цене. .
+                    </p>
+                    <div class="mt-4 p-3 bg-green-50 bg-opacity-70 border border-green-100 rounded-xl">
+                        <p class="text-green-700 text-base font-normal leading-relaxed">
+                            <span class="inline-block mr-1">✓</span> 
+                            Приведем чеки в соответствие с требованиями 54-ФЗ и добавим номенклатуру задним числом.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Форма -->
-        <section id="lead-form" class="pb-12">
-            <div class="cta-band p-8 md:p-10">
-                <div class="grid lg:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <div class="text-sm uppercase tracking-widest text-blue-100 font-semibold">Сформируем чек коррекции за 25 минут</div>
-                        <h2 class="text-3xl font-extrabold mt-3">Исправить ошибку в чеке</h2>
-                        <p class="text-blue-100 mt-3 leading-relaxed">Опишите проблему — мы подскажем, какой тип чека коррекции нужен, и сразу приступим к исправлению. Работаем удалённо по всей России.</p>
-                    </div>
-                    <form onsubmit="alert('Заявка отправлена!'); return false;" class="friendly-card p-6 space-y-4 text-slate-900">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Какая ошибка возникла?</label>
-                            <input type="text" required placeholder="Например: перепутали нал и безнал" class="w-full px-4 py-3 rounded-xl border border-slate-300 outline-none text-sm focus:border-blue-500">
+        <section>
+            <div class="max-w-4xl mx-auto mt-8 bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm">
+                
+                <div class="mb-12 text-left border-l-4 border-gray-300 pl-4">
+                    <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Процесс исправления: от заявки до защиты в ФНС</h2>
+                    <p class="mt-2 text-sm text-gray-500 uppercase tracking-wider font-medium">6 прозрачных этапов, на каждом из которых вы контролируете результат</p>
+                </div>
+
+                <div class="relative border-l-2 border-gray-200 ml-4 md:ml-6 space-y-6">
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute -left-3.5 top-1 bg-white border-2 border-gray-600 w-7 h-7 rounded-full flex items-center justify-center shadow-sm">
+                            <span class="text-xs font-bold text-gray-600">1</span>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Номер телефона</label>
-                            <input type="tel" required placeholder="+7 (999) 000-00-00" class="w-full px-4 py-3 rounded-xl border border-slate-300 outline-none text-sm focus:border-blue-500">
+                            <h3 class="text-lg font-bold text-gray-900 flex items-center">
+                                Заявка и первичный разбор
+                            </h3>
+                            <p class="text-gray-600 text-base mt-1.5 leading-relaxed max-w-xl">Вы оставляете заявку. Наш эксперт оперативно включается в задачу, чтобы оценить критичность ситуации и понять характер ошибки (нал/безнал, НДС, маркировка или упущенная выручка).</p>
                         </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md cursor-pointer text-sm transition">Получить помощь по чеку коррекции</button>
-                    </form>
+                    </div>
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute -left-3.5 top-1 bg-white border-2 border-gray-600 w-7 h-7 rounded-full flex items-center justify-center shadow-sm">
+                            <span class="text-xs font-bold text-gray-600">2</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Удаленный аудит</h3>
+                            <p class="text-gray-600 text-base mt-1.5 leading-relaxed max-w-xl">Мы бережно и безопасно подключаемся к вашей кассе или кабинету ОФД за 5 минут. Проводим глубокий анализ фискальных данных, логов оборудования и банковских выписок, чтобы определить точный объем скрытых расхождений.</p>
+                        </div>
+                    </div>
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute -left-3.5 top-1 bg-white border-2 border-gray-600 w-7 h-7 rounded-full flex items-center justify-center shadow-sm">
+                            <span class="text-xs font-bold text-gray-600">3</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Расчет стоимости и согласование</h3>
+                            <p class="text-gray-600 text-base mt-1.5 leading-relaxed max-w-xl">На основе аудита мы формируем четкий план действий по правилам ФФД 1.2. Фиксируем финальную стоимость и сроки исправления до начала работ — никаких скрытых переплат в процессе не возникнет.</p>
+                        </div>
+                    </div>
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute -left-3.5 top-1 bg-white border-2 border-gray-600 w-7 h-7 rounded-full flex items-center justify-center shadow-sm">
+                            <span class="text-xs font-bold text-gray-600">4</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Безопасное тестирование</h3>
+                            <p class="text-gray-600 text-base mt-1.5 leading-relaxed max-w-xl">Перед запуском массовой обработки мы формируем один пилотный чек коррекции. Вы лично проверяете его отображение в своем ОФД, убеждаетесь в точности тегов и даете старт основной процедуре.</p>
+                        </div>
+                    </div>
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute -left-3.5 top-1 bg-white border-2 border-gray-600 w-7 h-7 rounded-full flex items-center justify-center shadow-sm">
+                            <span class="text-xs font-bold text-gray-600">5</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Массовая фискализация и исправление</h3>
+                            <p class="text-gray-600 text-base mt-1.5 leading-relaxed max-w-xl">Мы запускаем автоматизированный процесс и полностью исправляем весь массив проблемных документов прямо в вашем кассовом ПО или ОФД, вообще не останавливая ваши текущие продажи.</p>
+                        </div>
+                    </div>
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="absolute -left-3.5 top-1 bg-green-600 border-2 border-green-600 w-7 h-7 rounded-full flex items-center justify-center shadow-md animate-pulse">
+                            <span class="text-xs font-bold text-white">✓</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Сдача работы и пакет документов</h3>
+                            <p class="text-gray-600 text-base mt-1.5 leading-relaxed max-w-xl">Вы проверяете финальные отчеты и подписываете акт. В дополнение вы получаете индивидуально составленный пакет юридических документов: шаблон объяснительной и пояснительную записку для ФНС.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12"> 
+                    <button data-page="checki-korrekcii" data-btn-id="steps-btn" class="open-modal-btn cheki-btn inline-block border border-gray-400 text-gray-900 font-medium font-medium px-6 py-3 rounded-lg transition">
+                        Оставить заявку
+                    </button> 
                 </div>
             </div>
         </section>
 
+        <section>
+            <div class="mx-auto mt-16">
+                <div class=" mb-10 border-gray-300 pl-4">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight check-problems-title">Нам доверяют: работаем быстро и добросовестно</h2>
+                    <p class="text-lg text-slate-700 mt-5 leading-relaxed">Главные преимущества и стандарты нашего сервиса</p>
+                </div>
+
+                <div class="bg-white border border-gray-100 shadow-sm divide-y divide-gray-100 overflow-hidden">
+                    <div class="p-6 md:p-8 flex items-start space-x-4 hover:bg-green-50 transition duration-150">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-50 flex items-center justify-center text-green-600 mt-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">100% удалённо по всей России</h3>
+                            <p class="text-gray-600 text-base mt-1 leading-relaxed">Подключаемся удалённо за 5 минут. Вам не нужно ехать в офис или ждать инженера — всё решается онлайн.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 flex items-start space-x-4 hover:bg-green-50 transition duration-150">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-50 flex items-center justify-center text-green-600 mt-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Полный пакет документов</h3>
+                            <p class="text-gray-600 text-base mt-1 leading-relaxed">Официальный договор, акт выполненных работ, шаблон объяснительной для ФНС. Бухгалтерия будет спокойна.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 flex items-start space-x-4 hover:bg-green-50 transition duration-150">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-50 flex items-center justify-center text-green-600 mt-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Без остановки продаж</h3>
+                            <p class="text-gray-600 text-base mt-1 leading-relaxed">Формируем чек коррекции, не блокируя кассу. Вы продолжаете работать, пока мы исправляем ошибку.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 flex items-start space-x-4 hover:bg-green-50 transition duration-150">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-50 flex items-center justify-center text-green-600 mt-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Конфиденциальность и гарантия</h3>
+                            <p class="text-gray-600 text-base mt-1 leading-relaxed">Не передаём данные третьим лицам. Даём гарантию, что чек коррекции будет принят ОФД и ФНС.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="my-12 text-center"> 
+            <button data-page="checki-korrekcii" data-btn-id="garantii-btn" class="open-modal-btn cheki-btn inline-block border border-gray-400 text-gray-900 font-medium font-medium px-6 py-3 rounded-lg transition">
+                Оставить заявку
+            </button> 
+        </div>
+
+        <section class="py-10 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Стоимость услуг</h2>
+                    <p class="mt-3 max-w-2xl mx-auto text-sm text-gray-500 uppercase tracking-wider font-medium">Прозрачное ценообразование без скрытых переплат и наценок</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-3xl mx-auto mt-10">
+                    <div class="bg-white p-8 rounded-3xl border border-gray-300 shadow-sm flex flex-col justify-between transition duration-200">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 text-center">Разовое исправление</h3>
+                            <p class="text-gray-400 text-base text-center mt-1">Корректировка одного чека</p>
+                            
+                            <div class="my-6 text-center">
+                                <span class="text-3xl font-extrabold text-gray-900">5 300</span>
+                                <span class="text-gray-500 font-medium ml-1">₽</span>
+                            </div>
+
+                            <ul class="space-y-3 border-t border-gray-300 pt-6">
+                                <li class="flex items-start text-base text-gray-600">
+                                    <span class="text-green-600 mr-2 font-bold">✓</span> Экспертный разбор одной ошибки
+                                </li>
+                                <li class="flex items-start text-base text-gray-600">
+                                    <span class="text-green-600 mr-2 font-bold">✓</span> Фискализация чека исправления
+                                </li>
+                                <li class="flex items-start text-base text-gray-600">
+                                    <span class="text-green-600 mr-2 font-bold">✓</span> Контроль отправки данных в ОФД
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8">
+                            <button data-page="checki-korrekcii" data-btn-id="tariff-single-btn" class="open-modal-btn w-full cheki-btn inline-block border border-gray-400 text-gray-900 font-medium font-medium py-3 px-4 rounded-xl transition text-center text-base shadow-sm">
+                                Выбрать тариф
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border-2 border-indigo-600 shadow-lg flex flex-col justify-between relative transition duration-200">
+                        <span class="absolute top-0 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                            Рекомендуем
+                        </span>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 text-center">Пакетное исправление</h3>
+                            <p class="text-gray-400 text-base text-center mt-1">Для больших объёмов (от 10 чеков)</p>
+                            
+                            <div class="my-6 text-center">
+                                <span class="text-gray-500 text-lg font-medium mr-1"><</span>
+                                <span class="text-3xl font-extrabold text-gray-900">12 400</span>
+                                <span class="text-gray-500 font-medium ml-1">₽</span>
+                            </div>
+
+                            <ul class="space-y-3 border-t border-gray-300 pt-6">
+                                <li class="flex items-start text-base text-gray-600">
+                                    <span class="text-green-600 mr-2 font-bold">✓</span> Комплексный аудит всей базы чеков
+                                </li>
+                                <li class="flex items-start text-base text-gray-600">
+                                    <span class="text-green-600 mr-2 font-bold">✓</span> Массовая автоматическая корректировка
+                                </li>
+                                <li class="flex items-start text-base text-gray-600">
+                                    <span class="text-green-600 mr-2 font-bold">✓</span> Исправление по ФФД 1.05 / 1.1 / 1.2
+                                </li>
+                                <li class="flex items-start text-base text-gray-600">
+                                    <span class="text-green-600 mr-2 font-bold">✓</span> Готовая объяснительная записка для ФНС
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="mt-8">
+                            <button data-page="checki-korrekcii" data-btn-id="tariff-many-btn" class="open-modal-btn w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl transition text-center text-base shadow-md">
+                                Выбрать тариф
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</main>
-
-<div class="simulator-container">
-    <!-- ЛЕВАЯ СТОРОНА: Форма ввода (Интерфейс кассы) -->
-    <div class="form-side">
-        <h2>Интерактивный симулятор заполнения тегов по ФФД 1.2</h2>
-        <p style="color: #64748b; font-size: 14px; margin-bottom: 25px;">Проверьте корректность заполнения тегов. Ошибки приведут к отказу со стороны ФНС.</p>
-        
-        <div class="form-group">
-            <label>Тип коррекции (Признак расчета)</label>
-            <select id="pr-rascheta">
-                <option value="ПРИХОД">Приход (Исправление излишка)</option>
-                <option value="ВОЗВРАТ ПРИХОДА" selected>Возврат прихода (Аннулирование ошибки)</option>
-            </select>
-        </div>
-
-        <div class="row-grid">
-            <div class="form-group" id="group-date">
-                <label>Дата ошибки (Тег 1178)</label>
-                <input type="date" id="corr-date" value="2023-10-18">
-                <div class="error-tip">Ошибка не может быть из будущего! ФНС заблокирует такой документ.</div>
-            </div>
-            <div class="form-group" id="group-fp">
-                <label>ФП старого чека (Тег 1192)</label>
-                <input type="text" id="tag-1192" placeholder="10 цифр" value="0315734359" maxlength="10">
-                <div class="error-tip">Тег 1192 должен состоять строго из 10 цифр! Без него невозможно связать каскад чеков.</div>
-            </div>
-        </div>
-
-        <div class="form-group" id="group-name">
-            <label>Наименование товара</label>
-            <input type="text" id="item-name" value="Чипсы с беконом LAYS">
-            <div class="error-tip">По ФФД 1.2 нельзя делать коррекцию «одной общей суммой». Обязательно укажите конкретный товар!</div>
-        </div>
-
-        <div class="row-grid">
-            <div class="form-group" id="group-price">
-                <label>Цена за единицу</label>
-                <input type="number" id="item-price" value="5.50" step="0.01" min="0.01">
-                <div class="error-tip">Цена должна быть больше нуля.</div>
-            </div>
-            <div class="form-group" id="group-qty">
-                <label>Количество</label>
-                <input type="number" id="item-qty" value="2.345" step="0.001" min="0.001">
-                <div class="error-tip">Количество должно быть больше нуля.</div>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label>Способ оплаты</label>
-            <select id="pay-type">
-                <option value="НАЛИЧНЫМИ">Наличными</option>
-                <option value="БЕЗНАЛИЧНЫМИ">Безналичными (Карта/СБП)</option>
-            </select>
-        </div>
-    </div>
-
-    <!-- ПРАВАЯ СТОРОНА: Живой интерактивный чек -->
-    <div class="receipt-side">
-        <h3>Предпросмотр документа</h3>
-        
-        <div class="receipt" id="receipt-bill">
-            <div class="receipt-title">Онлайн-Касса</div>
-            <div class="receipt-subtitle">Чек коррекции</div>
-            
-            <div>Осн. для корр.: <span id="view-date">18.10.23</span></div>
-            <div>Тип коррекции: Самостоятельно</div>
-            <div class="divider"></div>
-            
-            <div id="view-item-name" class="bold">Чипсы с беконом LAYS</div>
-            <div class="flex-row">
-                <div><span id="view-price">5.50</span> * <span id="view-qty">2.345</span></div>
-                <div id="view-total">-12.90</div>
-            </div>
-            <div>НДС 20%</div>
-            <div>ПРЕДОПЛАТА 100%</div>
-            
-            <div class="divider"></div>
-            <div class="flex-row bold" style="font-size: 15px;">
-                <div>ИТОГ</div>
-                <div id="view-total-bold">-12.90</div>
-            </div>
-            
-            <div class="flex-row">
-                <div>СУММА НДС 20%</div>
-                <div id="view-nds">-2.15</div>
-            </div>
-            <div class="flex-row">
-                <div id="view-pay-label">НАЛИЧНЫМИ</div>
-                <div id="view-pay-value">-12.90</div>
-            </div>
-            
-            <div class="divider"></div>
-            <div>ЗН ККТ 00106121280601</div>
-            <div>ИНН 7736570901</div>
-            <div>ФД 419</div>
-            <div class="bold">ФП <span id="view-fp">0315734359</span></div>
-            <div class="bold" id="view-pr-label">ВОЗВРАТ ПРИХОДА</div>
-        </div>
-
-        <div class="promo-box" id="promo-info">
-            🟢 Чек сформирован верно. Каскад готов к отправке в ФНС.
-        </div>
-    </div>
-</div>
+</container>
 
 <footer class="bg-gray-900 text-gray-300 py-10">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 items-start">
-        <div><div class="text-2xl font-black text-white">РосКасса <span class="font-light text-gray-400">Сервис</span></div><p class="text-sm text-gray-400 mt-3">Практическая удалённая помощь бизнесу по ККТ и маркировке.</p></div>
-        <div><h3 class="text-white font-semibold mb-3">Страницы</h3><ul class="space-y-2 text-sm text-gray-400"><li><a href="main.html" class="hover:text-white">Главная</a></li><li><a href="obuchenie-chestnyy-znak.html" class="hover:text-white">Обучение Честному ЗНАКу</a></li></ul></div>
-        <div><h3 class="text-white font-semibold mb-3">Контакты</h3><p class="text-sm text-gray-400">8 800 111-22-33</p><p class="text-sm text-gray-400 mt-2">info@vash-site.ru</p></div>
+        <div>
+            <div class="text-2xl font-black text-white">Кассовый <span class="text-xl text-gray-500">Эксперт</span></div>
+            <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                Удалённый сервис по Чекам коррекции и обучению Честному знаку.
+                Для тех, кому нужен понятный и быстрый сервис по всей России.
+            </p>
+        </div>
+        <div>
+            <h3 class="text-white font-semibold mb-3">Разделы</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="index.html" class="hover:text-white">Домой</a></li>
+                <li><a href="cheki-korrekcii.html" class="hover:text-white">Чеки коррекции</a></li>
+                <li><a href="obuchenie-chestnyy-znak.html" class="hover:text-white">Обучение Честному ЗНАКу</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-white font-semibold mb-3">Контакты</h3>
+            <p class="text-sm text-gray-400">8 800 111-22-33</p>
+            <p class="text-sm text-gray-400 mt-2">info@kktexpert.ru</p>
+            <p class="text-xs text-gray-500 mt-4">© 2026 Кассовый Эксперт. Все права защищены.</p>
+        </div>
     </div>
 </footer>
 
-<script>
-    const inputs = ['pr-rascheta', 'corr-date', 'tag-1192', 'item-name', 'item-price', 'item-qty', 'pay-type'];
-    
-    function validateAndUpdate() {
-        let isFormValid = true;
+<div id="modalOverlay" class="opacity-0 pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900 bg-opacity-60 backdrop-filter backdrop-blur-sm transition-opacity duration-300 ease-out">
+    <div class="bg-white p-8 rounded-3xl max-w-md w-full shadow-2xl border border-gray-100 relative">
+        <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
 
-        // Элементы
-        const prRascheta = document.getElementById('pr-rascheta').value;
-        const corrDateInput = document.getElementById('corr-date').value;
-        const fpInput = document.getElementById('tag-1192').value;
-        const nameInput = document.getElementById('item-name').value.trim();
-        const priceInput = parseFloat(document.getElementById('item-price').value) || 0;
-        const qtyInput = parseFloat(document.getElementById('item-qty').value) || 0;
-        const payType = document.getElementById('pay-type').value;
+        <div id="modalContentWrapper">
+            <h3 class="text-2xl font-bold text-gray-900 tracking-tight">Заказать обратный звонок</h3>
+            <p class="text-gray-700 mt-2">Оставьте Ваши контактные данные для связи. Режим обратного звонка:
+                <b>08:00 - 17:00 (Мск)</b>
+            </p>
+            
+            <form id="modalForm" class="mt-6 space-y-4">
+                <input type="hidden" id="modalSourcePage" name="source_page" value="">
+                <input type="hidden" id="modalSourceBtn" name="source_btn" value="">
 
-        // Сброс всех классов ошибок
-        document.querySelectorAll('.form-group').forEach(el => el.classList.remove('has-error'));
+                <div>
+                    <label class="block text-base font-semibold text-gray-700 mb-2">Номер телефона <span class="text-red-700 text-xl">*</span></label>
+                    <input type="tel" id="phone" name="user_phone" placeholder="8 (000) 000-00-00"class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-base transition">
+                    <span id="phoneError" class="mt-1 hidden text-xs text-red-500 font-medium">Не корректный номер</span>
+                </div>
 
-        // 1. Валидация ФП (Тег 1192) - строго 10 цифр
-        const fpRegex = /^\d{10}$/;
-        if (!fpRegex.test(fpInput)) {
-            document.getElementById('group-fp').classList.add('has-error');
-            isFormValid = false;
-        }
-            // 2. Валидация Названия (не пустое)
-            if (nameInput === "") {
-                document.getElementById('group-name').classList.add('has-error');isFormValid = false;
-            }
-            // 3. Валидация Даты (не из будущего)
-            const today = new Date().toISOString().split('T')[0];
-            if (corrDateInput > today || !corrDateInput) {document.getElementById('group-date').classList.add('has-error');
-            isFormValid = false;
-        }
-        // 4. Валидация числовых значений
-        if (priceInput <= 0) {
-            document.getElementById('group-price').classList.add('has-error');
-            isFormValid = false;
-        }
-        if (qtyInput <= 0) {
-            document.getElementById('group-qty').classList.add('has-error');
-            isFormValid = false;
-        }
-        // Логика визуального отображения чека
-        const receiptBill = document.getElementById('receipt-bill');
-        const promoInfo = document.getElementById('promo-info');
-        if (!isFormValid) {
-            receiptBill.classList.add('invalid');
-            promoInfo.innerHTML = "❌ Кассовая ошибка! Исправьте поля, подсвеченные красным, иначе чек не пройдет проверку ФНС.";
-            promoInfo.style.color = "var(--danger)";
-            promoInfo.style.borderColor = "var(--danger)";
-            promoInfo.style.background = "var(--danger-bg)";
-            return;
-        }
-        // Если всё валидно — убираем блокировку чека и обновляем данные
-        receiptBill.classList.remove('invalid');
-        promoInfo.innerHTML = "🟢 Чек сформирован верно. Данные синхронизированы по правилам ФФД 1.2.";
-        promoInfo.style.color = "#16a34a";promoInfo.style.borderColor = "#16a34a";
-        promoInfo.style.background = "#f0fdf4";
-        // Форматирование даты для чека
-        const formattedDate = new Date(corrDateInput).toLocaleDateString('ru-RU');
-        // Расчет финансовых итогов
-        let total = priceInput * qtyInput;let nds = total * 0.20; 
-        // 20% НДС
-        const sign = (prRascheta === "ВОЗВРАТ ПРИХОДА") ? "-" : "";
-        // Отрисовка значений в чек
-        document.getElementById('view-date').innerText = formattedDate;document.getElementById('view-fp').innerText = fpInput;
-        document.getElementById('view-item-name').innerText = nameInput;document.getElementById('view-price').innerText = priceInput.toFixed(2);
-        document.getElementById('view-qty').innerText = qtyInput;document.getElementById('view-total').innerText = sign + total.toFixed(2);
-        document.getElementById('view-total-bold').innerText = sign + total.toFixed(2);
-        document.getElementById('view-nds').innerText = sign + nds.toFixed(2);document.getElementById('view-pay-label').innerText = payType;
-        document.getElementById('view-pay-value').innerText = sign + total.toFixed(2);document.getElementById('view-pr-label').innerText = prRascheta;
-    }
-    // Привязываем живую валидацию на ввод данных
-    inputs.forEach(id => {document.getElementById(id).addEventListener('input', validateAndUpdate);});
-</script>
+                <div>
+                    <label class="block text-base font-semibold text-gray-700 mb-2">Ваше имя</label>
+                    <input type="text" name="user_name" placeholder="Введите Ваше имя"  class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-base transition">
+                </div>
 
+                <div class="pt-1">
+                    <label class="flex items-center gap-3 cursor-pointer select-none">
+                        <input 
+                            type="checkbox" 
+                            id="policy" 
+                            name="user_policy"
+                            class="mt-1 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 transition cursor-pointer"
+                        >
+                        <span class="text-sm text-gray-600 leading-tight">
+                            Я согласен на <a href="#" class="text-indigo-600 hover:underline">обработку персональных данных</a> <span class="text-red-700 text-xl">*</span>
+                        </span>
+                    </label>
+                    <span id="policyError" class="mt-1 hidden text-xs text-red-500 font-medium">Необходимо ваше согласие для отправки формы.</span>
+                </div>
+
+                <div id="serverErrorBlock" class="mt-2 hidden text-sm bg-red-50 text-red-600 p-3 rounded-lg border border-red-200">
+                    Произошла ошибка при отправке. Попробуйте позже.
+                </div>
+
+                <button type="submit" id="submitModalBtn" class="relative w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-4 rounded-xl transition text-center text-base shadow-md mt-4 focus:outline-none flex items-center justify-center gap-2">
+                    <svg id="btnLoader" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span id="btnText">Отправить заявку</span>
+                </button>
+            </form>
+
+            <p class="text-base text-gray-700 mt-4 text-center">
+                Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="assets/script-modal.js"></script>
 </body>
 </html>

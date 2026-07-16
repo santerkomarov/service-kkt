@@ -3,55 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>РосКасса Сервис — чеки коррекции и обучение Честному ЗНАКу</title>
-    <meta name="description" content="РосКасса Сервис помогает бизнесу удаленно: чеки коррекции, обучение работе с маркировкой, настройка Честного ЗНАКа и решение кассовых ошибок без штрафов и хаоса.">
+    <title>Кассовый эксперт — чеки коррекции и обучение Честному ЗНАКу</title>
+    <meta name="description" content="Кассовый эксперт помогает бизнесу удаленно: чеки коррекции, обучение работе с маркировкой, настройка Честного ЗНАКа и решение кассовых ошибок без штрафов и хаоса.">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/script-menu.js"></script>
 </head>
 <body class="text-gray-900 font-sans">
 
-<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30 backdrop-filter backdrop-blur">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
-        <div class="text-center lg:text-left">
-            <a href="index.html">
-                <span class="text-2xl font-black tracking-tight text-blue-600">Кассовый</span>
-                <span class="text-2xl font-light text-gray-500">Эксперт</span>
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        
+        <div class="shrink-0">
+            <a href="index.html" class="group block">
+                <div class="flex items-baseline gap-1">
+                    <span class="text-xl font-black tracking-tight text-blue-600 transition group-hover:text-blue-700">Кассовый</span>
+                    <span class="text-xl text-gray-500">Эксперт</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-0.5 hidden lg:block">
+                    Удалённая помощь бизнесу по кассам,<br class="hidden lg:block"> маркировке и отчетности по всей России
+                </p>
             </a>
-            <p class="text-xs text-gray-500 mt-0.5">Удалённая помощь бизнесу по кассам, <br>маркировке и отчетности по всей России</p>
         </div>
-        <div class="hidden md:flex items-center gap-6 text-sm text-gray-500">
-            <a href="cheki-korrekcii.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
+        <nav class="hidden lg:flex items-center gap-8 text font-medium">
+            <a href="cheki-korrekcii.html" class="text-gray-600 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full transition-colors">
                 Чеки коррекции
             </a>
-
-            <a href="checki-korrekcii-test.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition">
-                Тест чеки коррекции 
-            </a>
-
-            <a href="obuchenie-chestnyy-znak.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+            <a href="obuchenie-chestnyy-znak.html" class="text-gray-600 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-600 after:transition-all hover:after:w-full transition-colors">
                 Обучение маркировке
             </a>
-
-            <a href="chestnyy-znak-test.html"
-                class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow-sm hover:bg-green-700 transition">
+            <a href="checki-korrekcii-test.html" class="text-gray-500 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full transition-colors">
+                Тест чеки
+            </a>
+            <a href="chestnyy-znak-test.html" class="text-gray-500 hover:text-blue-600 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-600 after:transition-all hover:after:w-full transition-colors">
                 Тест маркировки
             </a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline-block text-base font-bold text-gray-700 hover:text-blue-600 transition-colors">
+                8 800 111-22-33
+            </span>
+                        <button id="mobileMenuBtn" class="lg:hidden p-2 text-gray-600 hover:text-blue-600 focus:outline-none transition-colors" aria-label="Открыть меню">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path id="burgerIcon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
-        <div class="text-center lg:text-right">
-            <a href="tel:+78001112233" class="text-base font-bold text-gray-400 hover:text-blue-600 transition">8 800 111-22-33</a>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-gray-100 bg-white shadow-xl absolute top-full left-0 w-full animate-fade-in">
+        <div class="px-4 py-6 space-y-4 flex flex-col font-medium text-base text-center">
+            <a href="cheki-korrekcii.html" class="py-2 text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition">Чеки коррекции</a>
+            <a href="obuchenie-chestnyy-znak.html" class="py-2 text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition">Обучение маркировке</a>
+            <div class="h-px bg-gray-100 my-1"></div>
+            <a href="checki-korrekcii-test.html" class="py-2 text-gray-700 hover:text-green-600 rounded-lg hover:bg-green-50 transition">Тест чеки коррекции</a>
+            <a href="chestnyy-znak-test.html" class="py-2 text-gray-700 hover:text-green-600 rounded-lg hover:bg-green-50 transition">Тест маркировки</a>
+            <div class="h-px bg-gray-100 my-1"></div>
         </div>
     </div>
 </header>
 
-<div class="main">
+<div class="hero">
     <img src="img/main2.jpg" alt="">
-    <div class="main-slogan-check">
+    <div class="hero-slogan-check">
         Формируем <span class="span-slogan-check" id="slogan-check">чеки коррекции</span>
     </div>
-    <div class="main-slogan-lesson">
+    <div class="hero-slogan-lesson">
         Обучаем работе с <span class="span-slogan-lesson" id="slogan-lesson">маркировкой</span>
     </div>
 </div>
@@ -62,7 +79,7 @@
             <span class="section-kicker">Зачем обращаются к нам</span>
             <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-4">Мы решаем не “абстрактные услуги”, <br> а реальные проблемы бизнеса</h2>
             <p class="text-gray-600 text-lg mt-4 leading-relaxed">
-                Когда касса ошибается, сотрудники путаются в маркировке, а бухгалтерия хочет уверенности в каждом чеке, нужен не формальный подрядчик, а спокойная команда, которая быстро подключится и разложит ситуацию по шагам.
+                Когда кассир ошибается, сотрудники путаются в маркировке, а бухгалтерия хочет уверенности в каждом чеке, нужен не формальный подрядчик, а спокойная команда, которая быстро подключится и разложит ситуацию по шагам.
             </p>
         </div>
 
@@ -120,8 +137,9 @@
 
         <div class="space-y-4">
             <details class="faq-item" open>
-                <summary class="faq-q">Вы действительно работаете удаленно по всей России?<span class="text-blue-600">＋</span></summary>
-                <div class="faq-a">Да. Подключаемся удаленно через AnyDesk или TeamViewer, поэтому можем помочь бизнесу в любом городе России. Такой формат особенно удобен, когда проблему нужно решить срочно, без ожидания выезда специалиста.</div>
+                <summary class="faq-q">
+                    Вы действительно работаете удаленно по всей России?<span class="text-blue-600">＋</span></summary>
+                <div class="faq-a">Да. Подключаемся удаленно, поэтому можем помочь бизнесу в любом городе России. Такой формат особенно удобен, когда проблему нужно решить срочно, без ожидания выезда специалиста.</div>
             </details>
             <details class="faq-item">
                 <summary class="faq-q">Чем вы полезны, если у нас уже есть бухгалтер или айтишник?<span class="text-blue-600">＋</span></summary>
@@ -142,59 +160,28 @@
 <footer class="bg-gray-900 text-gray-300 py-10">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 items-start">
         <div>
-            <div class="text-2xl font-black text-white">РосКасса <span class="font-light text-gray-400">Сервис</span></div>
-            <p class="text-sm text-gray-400 mt-3 leading-relaxed">Удаленная помощь по ККТ, маркировке и кассовым ошибкам. Для тех, кому нужен спокойный, понятный и быстрый сервис.</p>
+            <div class="text-2xl font-black text-white">Кассовый <span class="text-xl text-gray-500">Эксперт</span></div>
+            <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                Удалённый сервис по Чекам коррекции и обучению Честному знаку.
+                Для тех, кому нужен понятный и быстрый сервис по всей России.
+            </p>
         </div>
         <div>
             <h3 class="text-white font-semibold mb-3">Разделы</h3>
             <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="index.html" class="hover:text-white">Домой</a></li>
                 <li><a href="cheki-korrekcii.html" class="hover:text-white">Чеки коррекции</a></li>
                 <li><a href="obuchenie-chestnyy-znak.html" class="hover:text-white">Обучение Честному ЗНАКу</a></li>
-                <li><a href="#faq" class="hover:text-white">FAQ</a></li>
             </ul>
         </div>
         <div>
             <h3 class="text-white font-semibold mb-3">Контакты</h3>
             <p class="text-sm text-gray-400">8 800 111-22-33</p>
-            <p class="text-sm text-gray-400 mt-2">info@vash-site.ru</p>
-            <p class="text-xs text-gray-500 mt-4">© 2026 РосКасса-Сервис РФ. Все права защищены.</p>
+            <p class="text-sm text-gray-400 mt-2">info@kktexpert.ru</p>
+            <p class="text-xs text-gray-500 mt-4">© 2026 Кассовый Эксперт. Все права защищены.</p>
         </div>
     </div>
 </footer>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const sloganCheck = document.getElementById('slogan-check');
-    const sloganLesson = document.getElementById('slogan-lesson');
-    
-    // Устанавливаем начальный белый цвет
-    sloganCheck.style.color = 'white';
-    sloganLesson.style.color = 'white';
-    
-    let step = 0;
-    
-    function animate() {
-        step++;
-        
-        if (step === 1) {
-            // Через 2 секунды: slogan-check жёлтый
-            sloganCheck.style.color = 'yellow';
-            setTimeout(animate, 2000);
-        } else if (step === 2) {
-            // Через 2 секунды: slogan-lesson жёлтый
-            sloganLesson.style.color = 'yellow';
-            setTimeout(animate, 3000);
-        } else if (step === 3) {
-            // Через 3 секунды: оба белые
-            sloganCheck.style.color = 'white';
-            sloganLesson.style.color = 'white';
-            step = 0;
-            setTimeout(animate, 1000);
-        }
-    }
-    
-    // Запускаем первый шаг через 2 секунды
-    setTimeout(animate, 2000);
-});
-</script>
+
 </body>
 </html>

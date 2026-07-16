@@ -21,18 +21,6 @@ body {
 
 a { text-decoration: none; }
 
-/* .hero-slider {
-    position: relative;
-    overflow: hidden;
-    min-height: 620px;
-}
-
-.slide {
-    display: none;
-    position: relative;
-    min-height: 620px;
-} */
-
 .hero-slider {
     position: relative;
     overflow: hidden;
@@ -43,7 +31,7 @@ a { text-decoration: none; }
     position: absolute;
     inset: 0;
     width: 100%;
-    min-height: 620px;
+    min-height: 520px;
     transform: translateX(100%);
     transition: transform 0.65s ease;
     will-change: transform;
@@ -65,17 +53,16 @@ a { text-decoration: none; }
 
 .slide-shell {
     position: relative;
-    min-height: 620px;
+    min-height: 520px;
     overflow: hidden;
 }
 
 .slide-grid {
     position: relative;
     z-index: 2;
-    min-height: 620px;
+    min-height: 520px;
     display: grid;
     grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.8fr);
-    /* grid-template-columns: repeat(2, 1fr); */
     gap: 2rem;
     align-items: center;
 }
@@ -103,12 +90,13 @@ a { text-decoration: none; }
     font-weight: 900;
     letter-spacing: -.02em;
     margin-top: 1rem;
+    color: #0B1D44;
 }
 
 .hero-desc {
     font-size: 1.07rem;
     line-height: 1.75;
-    color: var(--soft-ink);
+    color: #0B1D44;
     margin-top: 1.2rem;
     max-width: 52rem;
 }
@@ -118,6 +106,10 @@ a { text-decoration: none; }
     flex-wrap: wrap;
     gap: .9rem;
     margin-top: 1.5rem;
+}
+
+.check-problems-title {
+    color: #0B1D44;
 }
 
 .btn-primary,
@@ -213,7 +205,7 @@ a { text-decoration: none; }
     justify-content: center;
 }
 
-.slide-correction {
+/* .slide-correction {
     background:
         radial-gradient(circle at 12% 14%, rgba(255,255,255,.95), rgba(255,255,255,0) 24%),
         linear-gradient(135deg, #fff9ef 0%, #fff7e6 35%, #fdf2f8 100%);
@@ -225,9 +217,9 @@ a { text-decoration: none; }
     background-image:
         radial-gradient(circle at 86% 26%, rgba(248, 113, 113, .12) 0, rgba(248, 113, 113, 0) 24%),
         radial-gradient(circle at 78% 86%, rgba(251, 191, 36, .12) 0, rgba(251, 191, 36, 0) 22%);
-}
+} */
 
-.slide-training {
+/* .slide-training {
     background:
         radial-gradient(circle at 18% 10%, rgba(255,255,255,.18), rgba(255,255,255,0) 24%),
         linear-gradient(135deg, #dbeafe 0%, #bfdbfe 20%, #dbeafe 34%, #dbeafe 35%, #dbeafe 36%, #d1fae5 100%);
@@ -239,7 +231,7 @@ a { text-decoration: none; }
     background-image:
         radial-gradient(circle at 82% 24%, rgba(37, 99, 235, .15) 0, rgba(37, 99, 235, 0) 25%),
         radial-gradient(circle at 88% 80%, rgba(16, 185, 129, .16) 0, rgba(16, 185, 129, 0) 22%);
-}
+} */
 
 .receipt-card {
     position: absolute;
@@ -468,142 +460,280 @@ a { text-decoration: none; }
 .wrap-img {
     padding: 20px 0;
 }
-
-
-.main {
-  position: relative;          /* точка отсчёта для абсолютных блоков */
-  overflow: hidden;            /* на случай, если текст вылезет */
-  background-color: #506F8D;
+.hero-visual-img {
+    max-height: 500px;
 }
 
-.main img {
-  display: block;              /* убираем нижний отступ у изображения */
-  width: 80%;
-  height: auto;                /* сохраняем пропорции */
-  filter: brightness(0.6);     /* затемнение (уже задано) */
-  margin: 0 auto;
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background-color: #506F8D;
+    width: 100%; 
 }
 
-/* Левый верхний угол */
-.main-slogan-check {
-  position: absolute;
-  bottom: 200px;
-  left: 50%;                       
-  transform: translateX(-50%);  
-  color: #ffffff;
-  font-size: 72px;
-  font-weight: bold;
-  z-index: 2;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);  
-  white-space: nowrap;
-  max-width: 90vw; 
+.hero {
+    position: relative;
+    width: 100%;
 }
 
-/* Правый нижний угол */
-.main-slogan-lesson {
-  position: absolute;
-  bottom: 100px;
-   right: 50%; 
-  transform: translateX(50%);  
-  color: #ffffff;
-  font-size: 72px;
-  font-weight: bold;
-  z-index: 2;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  white-space: nowrap;
-  max-width: 90vw; 
+.hero img {
+    display: block;
+    width: 70%;
+    height: auto;
+    filter: brightness(0.6);
+    margin: 0 auto;
 }
-.span-slogan-check {
-    color: yellow;
+
+@media (max-width: 1000px) {
+    .hero img {
+        width: 100%;
+    }
 }
-.span-slogan-lesson {
-    color: yellow;
+
+.hero-slogan-check {
+    position: absolute;
+    bottom: clamp(80px, 15vw, 200px); 
+    left: 50%;
+    transform: translateX(-50%);  
+    color: #ffffff;
+    font-size: clamp(24px, 4.5vw, 64px);
+    font-weight: bold;
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);  
+    white-space: nowrap;
+    max-width: 90vw; 
+}
+
+
+.hero-slogan-lesson {
+    position: absolute;
+    bottom: clamp(40px, 8vw, 100px);
+    right: 50%; 
+    transform: translateX(50%);  
+    color: #ffffff;
+    font-size: clamp(24px, 4.5vw, 64px);
+    font-weight: bold;
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    white-space: nowrap;
+    max-width: 90vw; 
+}
+@media (max-width: 600px) {
+    .hero-slogan-check, .hero-slogan-lesson {
+        white-space: normal;
+        text-align: center;
+        width: 90vw;        
+    }
+}
+@media (max-width: 430px) {
+    .hero-slogan-check, .hero-slogan-lesson {
+        font-size: 20px; 
+    }
+}
+
+.hero-slogan-check {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+    animation: fadeInUp 1.5s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-slogan-lesson {
+    opacity: 0;
+    transform: translate(50%, 20px);
+    animation: fadeInUpModal 1.5s ease forwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes fadeInUpModal {
+    to {
+        opacity: 1;
+        transform: translate(50%, 0);
+    }
+}
+
+
+.slide-shell {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+}
+
+.slide-grid {
+    position: relative;
+    z-index: 2;
+    min-height: 520px;
+    display: block;
+}
+
+.slide-copy {
+    padding: 3rem 0;
+    max-width: 600px;
+}
+
+.main-lesson .hero-top-img {
+    display: none;
+}
+
+.main-check .hero-top-img {
+    display: none;
+}
+
+.main-lesson .hero-title {
+    background-color: rgba(246, 244, 46, 0.8); 
+}
+.main-check .hero-title {
+    background-color: #CCDDFF; 
+}
+
+.main-lesson .wrap-hero-img {
+    background-color: #F6EC30; 
+}
+
+.main-check .wrap-hero-img {
+    background-color: #2C3E55; 
+}
+
+@media (max-width: 1024px) {
+    .main-lesson .hero-top-img {
+        display: block;
+    }
+    .main-check .hero-top-img {
+        display: block;
+    }
+    .slide-copy {
+        padding-top: 0px;
+        max-width: 100%;
+    }
+    .main-lesson .hero-title {
+        background-color: #fff;
+    }
+    .main-check .hero-title {
+        background-color: transparent;
+    }
+    .main-lesson .hero-visual {
+        display: none;
+    }
+    .main-check .hero-visual {
+        display: none;
+    }
+}
+
+@media (min-width: 1025px) {
+    .slide-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.8fr);
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .slide-copy {
+        padding: 2rem 0;
+        max-width: none;
+    }
+
+    .hero-visual {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: auto;
+        z-index: 2;
+        opacity: 1; 
+        pointer-events: auto;
+    }
 }
 
 .main-lesson, .main-check {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
 }
 
-.kicker-dark {
-    background: rgba(15,23,42,.08);
-    color: var(--ink);
+.obuchenie-btn {
+    background-color: rgba(246, 244, 46, 0.8);
+}
+.obuchenie-btn:hover {
+    background-color: #E0D42C;
 }
 
+.cheki-btn {
+    background-color: #CCDDFF;
+}
+.cheki-btn:hover {
+    background-color: #9EBEFF;
+}
+
+
 .simulator-container {
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 30px;
-            max-width: 950px;
-            margin: 0 auto 40px;
-            background: #ffffff;
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(29, 78, 216, 0.08);
-            border: 1px solid var(--border-color);
-        }
-        @media (max-width: 768px) {
-            .simulator-container { grid-template-columns: 1fr; padding: 20px; }
-        }
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 30px;
+    max-width: 950px;
+    margin: 0 auto 40px;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(29, 78, 216, 0.08);
+    border: 1px solid var(--border-color);
+}
+@media (max-width: 768px) {
+    .simulator-container { grid-template-columns: 1fr; padding: 20px; }
+}
+
+.form-side h2 { margin-top: 0; color: var(--primary); font-size: 24px; font-weight: 700; }
+.form-group { margin-bottom: 18px; position: relative; }
+.form-group label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; color: #334155; }
+
+.form-group input, .form-group select {
+    width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 15px; transition: all 0.2s ease;
+}
+.form-group input:focus, .form-group select:focus { 
+    border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.form-group.has-error input {
+    border-color: var(--danger); background-color: var(--danger-bg);
+}
         
-        /* Стили формы в синих тонах */
-        .form-side h2 { margin-top: 0; color: var(--primary); font-size: 24px; font-weight: 700; }
-        .form-group { margin-bottom: 18px; position: relative; }
-        .form-group label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; color: #334155; }
-        
-        .form-group input, .form-group select {
-            width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 15px; transition: all 0.2s ease;
-        }
-        .form-group input:focus, .form-group select:focus { 
-            border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
-        }
-        
-        /* Состояние ошибки для инпутов */
-        .form-group.has-error input {
-            border-color: var(--danger); background-color: var(--danger-bg);
-        }
-        
-        /* Всплывающие подсказки-ошибки */
-        .error-tip {
-            display: none; background: var(--danger); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px; line-height: 1.4; margin-top: 6px; position: relative; z-index: 10;
-        }
-        .error-tip::before {
-            content: ''; position: absolute; top: -4px; left: 15px; width: 8px; height: 8px; background: var(--danger); transform: rotate(45deg);
-        }
-        .form-group.has-error .error-tip { display: block; }
-        
-        .row-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        
-        /* Стили брендированной кассовой зоны */
-        .receipt-side {
-            background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 14px; padding: 120px 24px 24px 24px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-        }
-        .receipt-side h3 { margin-top: 0; color: #1e293b; font-size: 16px; margin-bottom: 15px; text-align: center; }
-        
-        /* Чек */
-        .receipt {
-            background: #fff; width: 100%; padding: 20px 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); font-family: "Courier New", Courier, monospace; font-size: 13px; color: #000; line-height: 1.4; border-top: 4px dashed #cbd5e1; border-bottom: 4px dashed #cbd5e1; box-sizing: border-box; transition: opacity 0.3s ease;
-        }
-        .receipt.invalid { opacity: 0.4; pointer-events: none; }
-        .receipt-title { font-weight: bold; text-align: center; font-size: 16px; text-transform: uppercase; margin-bottom: 4px; color: var(--primary); }
-        .receipt-subtitle { text-align: center; margin-bottom: 15px; font-weight: bold; }
-        .divider { border-top: 1px dashed #000; margin: 10px 0; }
-        .flex-row { display: flex; justify-content: space-between; }
-        .bold { font-weight: bold; }
-        
-        /* Коммерческая плашка под чеком */
-        .promo-box {
-            margin-top: 15px; background: rgba(29, 78, 216, 0.05); border: 1px dashed var(--primary); padding: 12px; border-radius: 8px; font-size: 13px; color: #1e293b; text-align: center; line-height: 1.4;
-        }
+/* Всплывающие подсказки-ошибки */
+.error-tip {
+    display: none; background: var(--danger); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px; line-height: 1.4; margin-top: 6px; position: relative; z-index: 10;
+}
+.error-tip::before {
+    content: ''; position: absolute; top: -4px; left: 15px; width: 8px; height: 8px; background: var(--danger); transform: rotate(45deg);
+}
+.form-group.has-error .error-tip { display: block; }
+
+.row-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* Стили брендированной кассовой зоны */
+.receipt-side {
+    background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 14px; padding: 120px 24px 24px 24px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+}
+.receipt-side h3 { margin-top: 0; color: #1e293b; font-size: 16px; margin-bottom: 15px; text-align: center; }
+
+/* Чек */
+.receipt {
+    background: #fff; width: 100%; padding: 20px 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); font-family: "Courier New", Courier, monospace; font-size: 13px; color: #000; line-height: 1.4; border-top: 4px dashed #cbd5e1; border-bottom: 4px dashed #cbd5e1; box-sizing: border-box; transition: opacity 0.3s ease;
+}
+.receipt.invalid { opacity: 0.4; pointer-events: none; }
+.receipt-title { font-weight: bold; text-align: center; font-size: 16px; text-transform: uppercase; margin-bottom: 4px; color: var(--primary); }
+.receipt-subtitle { text-align: center; margin-bottom: 15px; font-weight: bold; }
+.divider { border-top: 1px dashed #000; margin: 10px 0; }
+.flex-row { display: flex; justify-content: space-between; }
+.bold { font-weight: bold; }
 
 @media (max-width: 1024px) {
     .slide-grid {
         grid-template-columns: 1fr;
         gap: 0;
         padding-top: 1rem;
-    }
-    .hero-visual {
-        min-height: 380px;
-        margin-top: 1rem;
     }
 }
 
@@ -613,9 +743,6 @@ a { text-decoration: none; }
     .slide-shell,
     .slide-grid {
         min-height: auto;
-    }
-    .slide-copy {
-        padding: 2rem 0 1rem;
     }
     .hero-visual {
         min-height: 320px;
